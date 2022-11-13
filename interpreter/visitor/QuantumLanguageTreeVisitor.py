@@ -10,4 +10,5 @@ class QuantumLanguageTreeVisitor(QuantumLanguageParserVisitor):
     Tree Visitor, to implement a Quantum Language Interpreter
     """
     def visitStart(self, ctx: QuantumLanguageParser.StartContext):
+        print("Hello Quantum World!")
         return self.visitChildren(ctx)

@@ -8,10 +8,7 @@ else:
     from typing.io import TextIO
 
 
-if __name__ is not None and "." in __name__:
-    from .QuantumLanguageLexerBase import QuantumLanguageLexerBase
-else:
-    from QuantumLanguageLexerBase import QuantumLanguageLexerBase
+from recognition.base.QuantumLanguageLexerBase import QuantumLanguageLexerBase
 
 def serializedATN():
     return [

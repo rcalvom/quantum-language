@@ -2,7 +2,7 @@ import re
 import sys
 from typing import TextIO
 
-from recognition.generated import QuantumLanguageParser
+from recognition.generated.QuantumLanguageParser import QuantumLanguageParser
 from antlr4 import *
 from antlr4.Token import CommonToken
 
