@@ -1,0 +1,23 @@
+
+O
+grammar/QuantumLanguageLexer.g4,2/a/2a60bc226fd47b9b893df0e2fe3a3f3e98b1507a
+9
+	README.md,8/e/8ec9a00bfd09b3190ac6b22251dbb1aa95a0579d
+@
+requirements.txt,1/9/19359a61ae2446b51b549167b014da2fcf265768
+9
+	manage.py,3/1/3156ad13e4d695cd526bbb7b031016ecba842270
+R
+"interpreter/execution/interpret.py,b/0/b0eaf8c463f2ae21b9051cd517effd469ce4a4d0
+A
+grammar/README.md,c/4/c47b5383a77ffe771addcf88ae3ad8c8c921897e
+]
+-recognition/generated/QuantumLanguageLexer.py,9/1/913501e7ea1ce01e43bdf922338be415ffacd79f
+e
+5recognition/generated/QuantumLanguageParserVisitor.py,b/1/b1a58eb9bd8914fe6ca67f61fa82e3ded5fece86
+\
+,recognition/base/QuantumLanguageLexerBase.py,3/b/3b008a689f8699a1b293f10957c3e46a93c37107
+P
+ grammar/QuantumLanguageParser.g4,8/6/86c03ae2b6ec21ab7c5f9c649cae677dcb6b598a
+a
+1interpreter/visitor/QuantumLanguageTreeVisitor.py,b/a/ba1eddaf7b95978552ae13efeae3779ae4fb13af

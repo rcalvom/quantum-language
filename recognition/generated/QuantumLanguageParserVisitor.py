@@ -24,6 +24,16 @@ class QuantumLanguageParserVisitor(ParseTreeVisitor):
         return self.visitChildren(ctx)
 
 
+    # Visit a parse tree produced by QuantumLanguageParser#elif.
+    def visitElif(self, ctx:QuantumLanguageParser.ElifContext):
+        return self.visitChildren(ctx)
+
+
+    # Visit a parse tree produced by QuantumLanguageParser#else.
+    def visitElse(self, ctx:QuantumLanguageParser.ElseContext):
+        return self.visitChildren(ctx)
+
+
     # Visit a parse tree produced by QuantumLanguageParser#for.
     def visitFor(self, ctx:QuantumLanguageParser.ForContext):
         return self.visitChildren(ctx)
@@ -31,6 +41,21 @@ class QuantumLanguageParserVisitor(ParseTreeVisitor):
 
     # Visit a parse tree produced by QuantumLanguageParser#while.
     def visitWhile(self, ctx:QuantumLanguageParser.WhileContext):
+        return self.visitChildren(ctx)
+
+
+    # Visit a parse tree produced by QuantumLanguageParser#try.
+    def visitTry(self, ctx:QuantumLanguageParser.TryContext):
+        return self.visitChildren(ctx)
+
+
+    # Visit a parse tree produced by QuantumLanguageParser#except.
+    def visitExcept(self, ctx:QuantumLanguageParser.ExceptContext):
+        return self.visitChildren(ctx)
+
+
+    # Visit a parse tree produced by QuantumLanguageParser#function_execution.
+    def visitFunction_execution(self, ctx:QuantumLanguageParser.Function_executionContext):
         return self.visitChildren(ctx)
 
 
@@ -44,8 +69,8 @@ class QuantumLanguageParserVisitor(ParseTreeVisitor):
         return self.visitChildren(ctx)
 
 
-    # Visit a parse tree produced by QuantumLanguageParser#expresion.
-    def visitExpresion(self, ctx:QuantumLanguageParser.ExpresionContext):
+    # Visit a parse tree produced by QuantumLanguageParser#expression.
+    def visitExpression(self, ctx:QuantumLanguageParser.ExpressionContext):
         return self.visitChildren(ctx)
 
 

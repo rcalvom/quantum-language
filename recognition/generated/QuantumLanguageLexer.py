@@ -10,6 +10,7 @@ else:
 
 from recognition.base.QuantumLanguageLexerBase import QuantumLanguageLexerBase
 
+
 def serializedATN():
     return [
         4,0,64,383,6,-1,2,0,7,0,2,1,7,1,2,2,7,2,2,3,7,3,2,4,7,4,2,5,7,5,

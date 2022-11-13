@@ -12,36 +12,59 @@ sentence
     : if
     | for
     | while
+    | try
+    | function_execution
     | assign
     ;
 
 if
-    : IF expresion COLON INDENT (sentence (SEMI_COLON? NEWLINE))* (sentence SEMI_COLON?) DEDENT
-    (ELIF COLON INDENT (sentence (SEMI_COLON? NEWLINE))* (sentence SEMI_COLON?) DEDENT)*
-    (ELSE COLON INDENT (sentence (SEMI_COLON? NEWLINE))* (sentence SEMI_COLON?) DEDENT)?
+    : IF expression COLON INDENT (sentence (SEMI_COLON? NEWLINE))* (sentence SEMI_COLON?) DEDENT
+    (elif)*
+    (else)?
+    ;
+
+elif
+    : ELIF expression COLON INDENT (sentence (SEMI_COLON? NEWLINE))* (sentence SEMI_COLON?) DEDENT
+    ;
+
+else
+    : ELSE COLON INDENT (sentence (SEMI_COLON? NEWLINE))* (sentence SEMI_COLON?) DEDENT
     ;
 
 for
-    : FOR expresion IN expresion COLON INDENT (sentence (SEMI_COLON? NEWLINE))* (sentence SEMI_COLON?) DEDENT
+    : FOR identifier IN expression COLON INDENT (sentence (SEMI_COLON? NEWLINE))* (sentence SEMI_COLON?) DEDENT
     ;
 
 while
-    : WHILE expresion COLON INDENT (sentence (SEMI_COLON? NEWLINE))* (sentence SEMI_COLON?) DEDENT
+    : WHILE expression COLON INDENT (sentence (SEMI_COLON? NEWLINE))* (sentence SEMI_COLON?) DEDENT
+    ;
+
+try
+    : TRY COLON INDENT (sentence (SEMI_COLON? NEWLINE))* (sentence SEMI_COLON?) DEDENT
+    except
+    ;
+
+except
+    : EXCEPT expression COLON INDENT (sentence (SEMI_COLON? NEWLINE))* (sentence SEMI_COLON?) DEDENT
+    ;
+
+function_execution
+    : identifier OPEN_PAREN (expression (COMMA expression)*)? CLOSE_PAREN
     ;
 
 assign
-    : identifier ASSIGN expresion;
+    : identifier ASSIGN expression;
 
 identifier
     : IDENTIFIER (DOT IDENTIFIER)*
     ;
 
-expresion
-    : OPEN_PAREN expresion CLOSE_PAREN
-    | expresion binary_operator expresion
-    | unitary_operator expresion
+expression
+    : OPEN_PAREN expression CLOSE_PAREN
+    | expression binary_operator expression
+    | unitary_operator expression
     | identifier
-    // | function_excecution
+    | function_execution
     | INTEGER_LITERAL
     | STRING_LITERAL
     | IMAGINARY_LITERAL
