@@ -24,8 +24,38 @@ class QuantumLanguageParserVisitor(ParseTreeVisitor):
         return self.visitChildren(ctx)
 
 
+    # Visit a parse tree produced by QuantumLanguageParser#for.
+    def visitFor(self, ctx:QuantumLanguageParser.ForContext):
+        return self.visitChildren(ctx)
+
+
+    # Visit a parse tree produced by QuantumLanguageParser#while.
+    def visitWhile(self, ctx:QuantumLanguageParser.WhileContext):
+        return self.visitChildren(ctx)
+
+
     # Visit a parse tree produced by QuantumLanguageParser#assign.
     def visitAssign(self, ctx:QuantumLanguageParser.AssignContext):
+        return self.visitChildren(ctx)
+
+
+    # Visit a parse tree produced by QuantumLanguageParser#identifier.
+    def visitIdentifier(self, ctx:QuantumLanguageParser.IdentifierContext):
+        return self.visitChildren(ctx)
+
+
+    # Visit a parse tree produced by QuantumLanguageParser#expresion.
+    def visitExpresion(self, ctx:QuantumLanguageParser.ExpresionContext):
+        return self.visitChildren(ctx)
+
+
+    # Visit a parse tree produced by QuantumLanguageParser#binary_operator.
+    def visitBinary_operator(self, ctx:QuantumLanguageParser.Binary_operatorContext):
+        return self.visitChildren(ctx)
+
+
+    # Visit a parse tree produced by QuantumLanguageParser#unitary_operator.
+    def visitUnitary_operator(self, ctx:QuantumLanguageParser.Unitary_operatorContext):
         return self.visitChildren(ctx)
 
 
