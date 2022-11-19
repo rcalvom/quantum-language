@@ -11,6 +11,7 @@ class QuantumLanguageTreeVisitor(QuantumLanguageParserVisitor):
 
     def __init__(self):
         self.createFunctionPrint()
+        self.variables = {}
 
     def createFunctionPrint(self):
         self.functions["print"] = print
@@ -32,6 +33,71 @@ class QuantumLanguageTreeVisitor(QuantumLanguageParserVisitor):
             self.visitFunction_execution(ctx.function_execution())
         elif ctx.assign() is not None:
             self.visitAssign(ctx.assign())
+    
+    def visitAssign(self, ctx: QuantumLanguageParser.AssignContext):
+        id = ctx.identifier.text
+        self.variables[id] = self.visitExpression(ctx.expression())
+
+    def visitExpression(self, ctx: QuantumLanguageParser.ExpressionContext):
+        if ctx.OPEN_PAREN():
+            return self.visitExpression(ctx.expression())
+        if ctx.binary_operator():
+            left = self.visitExpression(ctx.expression(0))
+            right = self.visitExpression(ctx.expression(1))
+            bin_operator = ctx.binary_operator().getText()
+            if bin_operator == '+':
+                return left + right
+            if bin_operator == '-':
+                return left - right
+            if bin_operator == '*':
+                return left * right
+            if bin_operator == '/':
+                return left / right
+            if bin_operator == '//':
+                return left // right
+            if bin_operator == '%':
+                return left % right
+            if bin_operator == '**':
+                return left ** right
+            if bin_operator == '<':
+                return left < right
+            if bin_operator == '>':
+                return left > right
+            if bin_operator == '==':
+                return left == right
+            if bin_operator == '>=':
+                return left >= right
+            if bin_operator == '<=':
+                return left <= right
+            if bin_operator == '<>' or bin_operator == '!=':
+                return left != right
+        if ctx.unitary_operator():
+            u_operator = ctx.unitary_operator().getText()
+            operand = self.visitExpression(ctx.expression())
+            if u_operator == '+':
+                return +operand
+            if u_operator == '-':
+                return -operand
+            if u_operator == 'not':
+                return not u_operator
+        if ctx.identifier():
+            return self.variables[ctx.identifier().getText()]
+        if ctx.function_execution():
+            return self.visitFunction_execution(ctx.function_execution())
+        if ctx.INTEGER_LITERAL():
+            return int(ctx.INTEGER_LITERAL().getText())
+        if ctx.STRING_LITERAL():
+            return ctx.STRING_LITERAL().getText()
+        if ctx.IMAGINARY_LITERAL():
+            return complex(ctx.IMAGINARY_LITERAL().getText())
+        if ctx.FLOAT_LITERAL():
+            return float(ctx.FLOAT_LITERAL().getText())
+        if ctx.TRUE():
+            return True
+        if ctx.FALSE():
+            return False
+        return ctx.QUBIT_STATE_LITERAL().getText()
+        return None
 
     def visitIf(self, ctx: QuantumLanguageParser.IfContext):
         expression = self.visitExpression(ctx.expression())
