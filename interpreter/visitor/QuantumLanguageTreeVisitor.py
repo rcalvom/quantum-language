@@ -19,6 +19,10 @@ class QuantumLanguageTreeVisitor(QuantumLanguageParserVisitor):
     def visitStart(self, ctx: QuantumLanguageParser.StartContext):
         for sentence in ctx.sentence():
             self.visit(sentence)
+        # if ctx.sentence():
+        #     self.visitSentence(ctx.sentence())
+        # else:
+        #     self.visitComplex_sentence(ctx.complex_sentence())
 
     def visitSentence(self, ctx: QuantumLanguageParser.SentenceContext):
         if ctx.if_() is not None:
@@ -33,6 +37,9 @@ class QuantumLanguageTreeVisitor(QuantumLanguageParserVisitor):
             self.visitFunction_execution(ctx.function_execution())
         elif ctx.assign() is not None:
             self.visitAssign(ctx.assign())
+
+    def visitComplex_sentence(self, ctx:QuantumLanguageParser.Complex_sentenceContext):
+        return self.visitChildren(ctx)
     
     def visitAssign(self, ctx: QuantumLanguageParser.AssignContext):
         id = ctx.identifier.text
@@ -163,4 +170,7 @@ class QuantumLanguageTreeVisitor(QuantumLanguageParserVisitor):
             self.visitSentence(sentence)
 
     def visitFunction_execution(self, ctx: QuantumLanguageParser.Function_executionContext):
+        return super().visitFunction_execution(ctx)
+
+    def visitFunction_declaration(self, ctx:QuantumLanguageParser.Function_declarationContext):
         return super().visitFunction_execution(ctx)

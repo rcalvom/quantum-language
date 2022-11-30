@@ -5,7 +5,9 @@ options {
 }
 
 start
-    : (sentence (SEMI_COLON? NEWLINE))* (sentence SEMI_COLON?) EOF
+    :(sentence (SEMI_COLON? NEWLINE))* (sentence SEMI_COLON?) EOF
+//    | function_declaration EOF
+//    : sentence | complex_sentence
     ;
 
 sentence
@@ -15,7 +17,9 @@ sentence
     | try
     | function_execution
     | assign
+    | function_declaration
     ;
+
 
 if
     : IF expression COLON INDENT (sentence (SEMI_COLON? NEWLINE))* (sentence SEMI_COLON?) DEDENT
@@ -51,6 +55,11 @@ except
 function_execution
     : identifier OPEN_PAREN (expression (COMMA expression)*)? CLOSE_PAREN
     ;
+
+function_declaration
+    : DEF identifier OPEN_PAREN (identifier (COMMA identifier)*)? CLOSE_PAREN COLON INDENT sentence DEDENT
+    ;
+
 
 assign
     : identifier ASSIGN expression;
