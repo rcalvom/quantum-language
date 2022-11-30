@@ -1,39 +1,13 @@
 lexer grammar QuantumLanguageLexer;
 
 // Token injection implementation
-tokens { INDENT, DEDENT }
+// tokens { INDENT, DEDENT }
 
 // Define superclass
 options {
     superClass=QuantumLanguageLexerBase;
 }
 
- /* Identifier*/
-IDENTIFIER: [a-zA-Z][a-zA-Z0-9_]*;
-
-/* Literals */
-STRING_LITERAL
-    : '\'' . '\''
-    | '"' . '"'
-    ;
-
-INTEGER_LITERAL
-    : [1-9][0-9]*
-    | [0]
-    ;
-//TODO: ADD BIN OCTAL HEX NUMBERS
-
-IMAGINARY_LITERAL
-    : (FLOAT_LITERAL|INTEGER_LITERAL) [iI]
-    ;
-
-FLOAT_LITERAL
-    : INTEGER_LITERAL '.' [0-9]+
-    ;
-
-QUBIT_STATE_LITERAL
-    : '|' [01+-]+ '>'
-    ;
 
 /* Operators*/
 // Math operators
@@ -108,8 +82,8 @@ OPEN_PAREN : '(';
 CLOSE_PAREN : ')';
 OPEN_BRACK : '[';
 CLOSE_BRACK : ']';
-OPEN_BRACE : '{';
-CLOSE_BRACE : '}';
+//OPEN_BRACE : '{';
+//CLOSE_BRACE : '}';
 
 /* Structural literals */
 DOT : '.';
@@ -118,7 +92,43 @@ COLON : ':';
 SEMI_COLON : ';';
 NEWLINE : '\n';
 
+// tokens { INDENT, DEDENT }
+INDENT: '{';
+DEDENT: '}';
+
+
+/* Identifier*/
+IDENTIFIER: [a-zA-Z][a-zA-Z0-9_]*;
+
+/* Literals */
+STRING_LITERAL
+    : '\'' . '\''
+    | '"' . '"'
+    ;
+
+INTEGER_LITERAL
+    : [1-9][0-9]*
+    | [0]
+    ;
+//TODO: ADD BIN OCTAL HEX NUMBERS
+
+IMAGINARY_LITERAL
+    : (FLOAT_LITERAL|INTEGER_LITERAL) [iI]
+    ;
+
+FLOAT_LITERAL
+    : INTEGER_LITERAL '.' [0-9]+
+    ;
+
+QUBIT_STATE_LITERAL
+    : '|' [01+-]+ '>'
+    ;
+
+
+
+
+SPACES: [ \t\r\n]+ -> skip;
+
 /* Tokens to skip */
-SKIP_
- : ([ \t\r\n]+|'#'~[\r\n]*) -> skip
- ;
+COMMENTS: '#'~[\r\n]+ -> skip;
+

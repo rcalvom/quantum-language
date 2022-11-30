@@ -5,9 +5,10 @@ options {
 }
 
 start
-    :(sentence (SEMI_COLON? NEWLINE))* (sentence SEMI_COLON?) EOF
+ //   :(sentence (SEMI_COLON? NEWLINE))* (sentence SEMI_COLON?) EOF
 //    | function_declaration EOF
 //    : sentence | complex_sentence
+    : sentence
     ;
 
 sentence

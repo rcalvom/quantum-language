@@ -2,7 +2,6 @@
 
 # ANTLR4
 from antlr4.CommonTokenStream import CommonTokenStream
-from antlr4.InputStream import InputStream
 from antlr4.FileStream import FileStream
 from antlr4.tree.Tree import ParseTree
 from antlr4.error.ErrorListener import ErrorListener
@@ -14,8 +13,7 @@ from ..visitor.QuantumLanguageTreeVisitor import QuantumLanguageTreeVisitor
 
 
 def interpret(path):
-    tokens: CommonTokenStream = CommonTokenStream(QuantumLanguageLexer(
-        FileStream(path)))
+    tokens: CommonTokenStream = CommonTokenStream(QuantumLanguageLexer(FileStream(path)))
     # TODO: receive a file content
     parser: QuantumLanguageParser = QuantumLanguageParser(tokens)
     # TODO: Add Syntax Error Listener

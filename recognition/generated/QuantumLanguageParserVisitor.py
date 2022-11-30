@@ -19,11 +19,6 @@ class QuantumLanguageParserVisitor(ParseTreeVisitor):
         return self.visitChildren(ctx)
 
 
-    # Visit a parse tree produced by QuantumLanguageParser#complex_sentence.
-    def visitComplex_sentence(self, ctx:QuantumLanguageParser.Complex_sentenceContext):
-        return self.visitChildren(ctx)
-
-
     # Visit a parse tree produced by QuantumLanguageParser#if.
     def visitIf(self, ctx:QuantumLanguageParser.IfContext):
         return self.visitChildren(ctx)

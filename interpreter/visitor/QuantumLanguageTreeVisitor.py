@@ -37,9 +37,6 @@ class QuantumLanguageTreeVisitor(QuantumLanguageParserVisitor):
             self.visitFunction_execution(ctx.function_execution())
         elif ctx.assign() is not None:
             self.visitAssign(ctx.assign())
-
-    def visitComplex_sentence(self, ctx:QuantumLanguageParser.Complex_sentenceContext):
-        return self.visitChildren(ctx)
     
     def visitAssign(self, ctx: QuantumLanguageParser.AssignContext):
         id = ctx.identifier.text
