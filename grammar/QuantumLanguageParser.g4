@@ -16,6 +16,11 @@ sentence
     | for
     | while
     | try
+    | matmul
+    | kronecker
+    | hermitian
+    | conjugate
+    | transpose
     | function_execution
     | assign
     | function_declaration
@@ -52,6 +57,30 @@ try
 except
     : EXCEPT expression COLON INDENT (sentence (SEMI_COLON? NEWLINE))* (sentence SEMI_COLON?) DEDENT
     ;
+
+matmul
+    : MATMUL identifier identifier
+    ;
+
+
+(MATMUL | KRONECKER) identifier
+
+kronecker
+    : KRONECKER identifier identifier
+    ;
+
+hermitian
+    : HERMITIAN identifier
+    ;
+
+conjugate
+    : CONJUGATE identifier
+    ;
+
+transpose
+    : TRANSPOSE identifier
+    ;
+
 
 function_execution
     : identifier OPEN_PAREN (expression (COMMA expression)*)? CLOSE_PAREN

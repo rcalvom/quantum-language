@@ -3,6 +3,7 @@
 # Quantum Language
 from recognition.generated.QuantumLanguageParser import QuantumLanguageParser
 from recognition.generated.QuantumLanguageParserVisitor import QuantumLanguageParserVisitor
+import numpy as np
 
 
 class QuantumLanguageTreeVisitor(QuantumLanguageParserVisitor):
@@ -17,8 +18,9 @@ class QuantumLanguageTreeVisitor(QuantumLanguageParserVisitor):
         self.functions["print"] = print
 
     def visitStart(self, ctx: QuantumLanguageParser.StartContext):
-        for sentence in ctx.sentence():
-            self.visit(sentence)
+        self.visit(ctx.sentence())
+        # for sentence in ctx.sentence():
+        #     self.visit(sentence)
         # if ctx.sentence():
         #     self.visitSentence(ctx.sentence())
         # else:
@@ -37,7 +39,50 @@ class QuantumLanguageTreeVisitor(QuantumLanguageParserVisitor):
             self.visitFunction_execution(ctx.function_execution())
         elif ctx.assign() is not None:
             self.visitAssign(ctx.assign())
-    
+        elif ctx.matmul() is not None:
+            self.visitMatMul(ctx.matmul())
+        elif ctx.kronecker() is not None:
+            self.visitKronecker(ctx.kronecker())
+        elif ctx.hermitian() is not None:
+            self.visitHermitian(ctx.hermitian())
+        elif ctx.conjugate() is not None:
+            self.visitConjugate(ctx.conjugate())
+        elif ctx.transpose() is not None:
+            self.visitTranspose(ctx.transpose())
+        elif ctx.function_declaration() is not None:
+            self.visitFunction_declaration(ctx.function_declaration())
+
+
+    def visitMatMul(self, ctx: QuantumLanguageParser.MatmulContext):
+        first = ctx.identifier(0).getText()
+        second = ctx.identifier(1).getText()
+        if first.isupper() and second.isupper():
+            print('se hace el producto')
+        else:
+            raise Exception('no matrix product')
+
+    def visitKronecker(self, ctx: QuantumLanguageParser.KroneckerContext):
+        first = ctx.identifier(0).getText()
+        second = ctx.identifier(1).getText()
+        if first.isupper() and second.isupper():
+            print('se hace el producto kronecker')
+        else:
+            raise Exception('no kronecker product')
+
+    def visitHermitian(self, ctx: QuantumLanguageParser.HermitianContext):
+        first = ctx.identifier(0).getText()
+        print('se hace la hermitiana de la matriz')
+
+    def visitConjugate(self, ctx: QuantumLanguageParser.ConjugateContext):
+        first = ctx.identifier(0).getText()
+        print('se hace la conjugada de la matriz')
+
+    def visitTranspose(self, ctx: QuantumLanguageParser.TransposeContext):
+        first = ctx.identifier(0).getText()
+        print('se hace la transpuesta de la matriz')
+
+
+
     def visitAssign(self, ctx: QuantumLanguageParser.AssignContext):
         id = ctx.identifier.text
         self.variables[id] = self.visitExpression(ctx.expression())
@@ -170,4 +215,5 @@ class QuantumLanguageTreeVisitor(QuantumLanguageParserVisitor):
         return super().visitFunction_execution(ctx)
 
     def visitFunction_declaration(self, ctx:QuantumLanguageParser.Function_declarationContext):
-        return super().visitFunction_execution(ctx)
+        return super().visitFunction_declaration(ctx)
+

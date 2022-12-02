@@ -54,6 +54,31 @@ class QuantumLanguageParserVisitor(ParseTreeVisitor):
         return self.visitChildren(ctx)
 
 
+    # Visit a parse tree produced by QuantumLanguageParser#matmul.
+    def visitMatmul(self, ctx:QuantumLanguageParser.MatmulContext):
+        return self.visitChildren(ctx)
+
+
+    # Visit a parse tree produced by QuantumLanguageParser#kronecker.
+    def visitKronecker(self, ctx:QuantumLanguageParser.KroneckerContext):
+        return self.visitChildren(ctx)
+
+
+    # Visit a parse tree produced by QuantumLanguageParser#hermitian.
+    def visitHermitian(self, ctx:QuantumLanguageParser.HermitianContext):
+        return self.visitChildren(ctx)
+
+
+    # Visit a parse tree produced by QuantumLanguageParser#conjugate.
+    def visitConjugate(self, ctx:QuantumLanguageParser.ConjugateContext):
+        return self.visitChildren(ctx)
+
+
+    # Visit a parse tree produced by QuantumLanguageParser#transpose.
+    def visitTranspose(self, ctx:QuantumLanguageParser.TransposeContext):
+        return self.visitChildren(ctx)
+
+
     # Visit a parse tree produced by QuantumLanguageParser#function_execution.
     def visitFunction_execution(self, ctx:QuantumLanguageParser.Function_executionContext):
         return self.visitChildren(ctx)

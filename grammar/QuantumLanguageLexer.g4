@@ -75,6 +75,16 @@ CONTINUE : 'continue';
 BREAK : 'break';
 //ASYNC : 'async';
 //AWAIT : 'await';
+// matrix product
+MATMUL : 'matmul';
+// kroncecker product
+KRONECKER : 'kron';
+// hermitian
+HERMITIAN : 'herm';
+// conjugate
+CONJUGATE : 'conjugate';
+// transpose
+TRANSPOSE: 'transpose';
 //TODO: Use commentned keywords
 
 /* Grouping literals */
