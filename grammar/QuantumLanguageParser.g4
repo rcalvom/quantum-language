@@ -39,7 +39,7 @@ else
     ;
 
 for
-    : FOR identifier IN expression COLON INDENT sentence+ DEDENT
+    : FOR identifier IN expression COLON NEWLINE INDENT statement+ DEDENT
     ;
 
 while

@@ -10,7 +10,7 @@ else:
 
 def serializedATN():
     return [
-        4,1,66,248,2,0,7,0,2,1,7,1,2,2,7,2,2,3,7,3,2,4,7,4,2,5,7,5,2,6,7,
+        4,1,66,249,2,0,7,0,2,1,7,1,2,2,7,2,2,3,7,3,2,4,7,4,2,5,7,5,2,6,7,
         6,2,7,7,7,2,8,7,8,2,9,7,9,2,10,7,10,2,11,7,11,2,12,7,12,2,13,7,13,
         2,14,7,14,2,15,7,15,2,16,7,16,2,17,7,17,2,18,7,18,1,0,4,0,40,8,0,
         11,0,12,0,41,1,0,1,0,1,1,1,1,1,1,5,1,49,8,1,10,1,12,1,52,9,1,1,1,
@@ -18,86 +18,86 @@ def serializedATN():
         2,1,3,1,3,1,3,1,3,1,3,1,3,4,3,76,8,3,11,3,12,3,77,1,3,1,3,5,3,82,
         8,3,10,3,12,3,85,9,3,1,3,3,3,88,8,3,1,4,1,4,1,4,1,4,1,4,1,4,4,4,
         96,8,4,11,4,12,4,97,1,4,1,4,1,5,1,5,1,5,1,5,1,5,4,5,107,8,5,11,5,
-        12,5,108,1,5,1,5,1,6,1,6,1,6,1,6,1,6,1,6,1,6,4,6,120,8,6,11,6,12,
-        6,121,1,6,1,6,1,7,1,7,1,7,1,7,1,7,4,7,131,8,7,11,7,12,7,132,1,7,
-        1,7,1,8,1,8,1,8,1,8,4,8,141,8,8,11,8,12,8,142,1,8,1,8,1,8,1,9,1,
-        9,1,9,1,9,1,9,1,9,3,9,154,8,9,1,9,1,9,5,9,158,8,9,10,9,12,9,161,
-        9,9,1,9,1,9,3,9,165,8,9,1,9,1,9,1,10,1,10,1,10,1,10,1,10,5,10,174,
-        8,10,10,10,12,10,177,9,10,3,10,179,8,10,1,10,1,10,1,11,1,11,1,11,
-        1,11,1,11,1,11,5,11,189,8,11,10,11,12,11,192,9,11,3,11,194,8,11,
-        1,11,1,11,1,11,1,11,1,11,1,11,1,12,1,12,1,12,1,12,3,12,206,8,12,
-        1,13,1,13,1,14,1,14,1,14,1,14,1,14,1,14,1,14,1,14,1,14,1,14,1,14,
-        1,14,1,14,1,14,1,14,1,14,1,14,3,14,227,8,14,1,14,1,14,1,14,1,14,
-        1,14,1,14,5,14,235,8,14,10,14,12,14,238,9,14,1,15,1,15,1,16,1,16,
-        1,17,1,17,1,18,1,18,1,18,0,1,28,19,0,2,4,6,8,10,12,14,16,18,20,22,
-        24,26,28,30,32,34,36,0,4,1,0,58,60,2,0,5,18,53,54,2,0,5,6,35,35,
-        1,0,55,57,267,0,39,1,0,0,0,2,45,1,0,0,0,4,67,1,0,0,0,6,69,1,0,0,
-        0,8,89,1,0,0,0,10,101,1,0,0,0,12,112,1,0,0,0,14,125,1,0,0,0,16,136,
-        1,0,0,0,18,147,1,0,0,0,20,168,1,0,0,0,22,182,1,0,0,0,24,201,1,0,
-        0,0,26,207,1,0,0,0,28,226,1,0,0,0,30,239,1,0,0,0,32,241,1,0,0,0,
-        34,243,1,0,0,0,36,245,1,0,0,0,38,40,3,2,1,0,39,38,1,0,0,0,40,41,
-        1,0,0,0,41,39,1,0,0,0,41,42,1,0,0,0,42,43,1,0,0,0,43,44,5,0,0,1,
-        44,1,1,0,0,0,45,50,3,4,2,0,46,47,5,51,0,0,47,49,3,4,2,0,48,46,1,
-        0,0,0,49,52,1,0,0,0,50,48,1,0,0,0,50,51,1,0,0,0,51,54,1,0,0,0,52,
-        50,1,0,0,0,53,55,5,51,0,0,54,53,1,0,0,0,54,55,1,0,0,0,55,56,1,0,
-        0,0,56,57,5,52,0,0,57,3,1,0,0,0,58,68,3,6,3,0,59,68,3,12,6,0,60,
-        68,3,14,7,0,61,68,3,16,8,0,62,68,3,20,10,0,63,68,3,24,12,0,64,68,
-        3,22,11,0,65,68,3,36,18,0,66,68,3,28,14,0,67,58,1,0,0,0,67,59,1,
-        0,0,0,67,60,1,0,0,0,67,61,1,0,0,0,67,62,1,0,0,0,67,63,1,0,0,0,67,
-        64,1,0,0,0,67,65,1,0,0,0,67,66,1,0,0,0,68,5,1,0,0,0,69,70,5,24,0,
-        0,70,71,3,28,14,0,71,72,5,50,0,0,72,73,5,52,0,0,73,75,5,1,0,0,74,
-        76,3,2,1,0,75,74,1,0,0,0,76,77,1,0,0,0,77,75,1,0,0,0,77,78,1,0,0,
-        0,78,79,1,0,0,0,79,83,5,2,0,0,80,82,3,8,4,0,81,80,1,0,0,0,82,85,
-        1,0,0,0,83,81,1,0,0,0,83,84,1,0,0,0,84,87,1,0,0,0,85,83,1,0,0,0,
-        86,88,3,10,5,0,87,86,1,0,0,0,87,88,1,0,0,0,88,7,1,0,0,0,89,90,5,
-        25,0,0,90,91,3,28,14,0,91,92,5,50,0,0,92,93,5,52,0,0,93,95,5,1,0,
-        0,94,96,3,2,1,0,95,94,1,0,0,0,96,97,1,0,0,0,97,95,1,0,0,0,97,98,
-        1,0,0,0,98,99,1,0,0,0,99,100,5,2,0,0,100,9,1,0,0,0,101,102,5,26,
-        0,0,102,103,5,50,0,0,103,104,5,52,0,0,104,106,5,1,0,0,105,107,3,
-        2,1,0,106,105,1,0,0,0,107,108,1,0,0,0,108,106,1,0,0,0,108,109,1,
-        0,0,0,109,110,1,0,0,0,110,111,5,2,0,0,111,11,1,0,0,0,112,113,5,28,
-        0,0,113,114,3,26,13,0,114,115,5,29,0,0,115,116,3,28,14,0,116,117,
-        5,50,0,0,117,119,5,1,0,0,118,120,3,4,2,0,119,118,1,0,0,0,120,121,
-        1,0,0,0,121,119,1,0,0,0,121,122,1,0,0,0,122,123,1,0,0,0,123,124,
-        5,2,0,0,124,13,1,0,0,0,125,126,5,27,0,0,126,127,3,28,14,0,127,128,
-        5,50,0,0,128,130,5,1,0,0,129,131,3,4,2,0,130,129,1,0,0,0,131,132,
-        1,0,0,0,132,130,1,0,0,0,132,133,1,0,0,0,133,134,1,0,0,0,134,135,
-        5,2,0,0,135,15,1,0,0,0,136,137,5,30,0,0,137,138,5,50,0,0,138,140,
-        5,1,0,0,139,141,3,4,2,0,140,139,1,0,0,0,141,142,1,0,0,0,142,140,
-        1,0,0,0,142,143,1,0,0,0,143,144,1,0,0,0,144,145,5,2,0,0,145,146,
-        3,18,9,0,146,17,1,0,0,0,147,148,5,32,0,0,148,149,3,28,14,0,149,150,
-        5,50,0,0,150,159,5,1,0,0,151,153,3,4,2,0,152,154,5,51,0,0,153,152,
-        1,0,0,0,153,154,1,0,0,0,154,155,1,0,0,0,155,156,5,52,0,0,156,158,
-        1,0,0,0,157,151,1,0,0,0,158,161,1,0,0,0,159,157,1,0,0,0,159,160,
-        1,0,0,0,160,162,1,0,0,0,161,159,1,0,0,0,162,164,3,4,2,0,163,165,
-        5,51,0,0,164,163,1,0,0,0,164,165,1,0,0,0,165,166,1,0,0,0,166,167,
-        5,2,0,0,167,19,1,0,0,0,168,169,3,26,13,0,169,178,5,44,0,0,170,175,
-        3,28,14,0,171,172,5,49,0,0,172,174,3,28,14,0,173,171,1,0,0,0,174,
-        177,1,0,0,0,175,173,1,0,0,0,175,176,1,0,0,0,176,179,1,0,0,0,177,
-        175,1,0,0,0,178,170,1,0,0,0,178,179,1,0,0,0,179,180,1,0,0,0,180,
-        181,5,45,0,0,181,21,1,0,0,0,182,183,5,20,0,0,183,184,3,26,13,0,184,
-        193,5,44,0,0,185,190,3,26,13,0,186,187,5,49,0,0,187,189,3,26,13,
-        0,188,186,1,0,0,0,189,192,1,0,0,0,190,188,1,0,0,0,190,191,1,0,0,
-        0,191,194,1,0,0,0,192,190,1,0,0,0,193,185,1,0,0,0,193,194,1,0,0,
-        0,194,195,1,0,0,0,195,196,5,45,0,0,196,197,5,50,0,0,197,198,5,1,
-        0,0,198,199,3,4,2,0,199,200,5,2,0,0,200,23,1,0,0,0,201,202,3,26,
-        13,0,202,203,5,19,0,0,203,205,3,28,14,0,204,206,5,51,0,0,205,204,
-        1,0,0,0,205,206,1,0,0,0,206,25,1,0,0,0,207,208,7,0,0,0,208,27,1,
-        0,0,0,209,210,6,14,-1,0,210,211,5,44,0,0,211,212,3,28,14,0,212,213,
-        5,45,0,0,213,227,1,0,0,0,214,215,3,32,16,0,215,216,3,28,14,12,216,
-        227,1,0,0,0,217,227,3,26,13,0,218,227,3,20,10,0,219,227,5,62,0,0,
-        220,227,5,61,0,0,221,227,5,63,0,0,222,227,5,64,0,0,223,227,5,38,
-        0,0,224,227,5,39,0,0,225,227,5,65,0,0,226,209,1,0,0,0,226,214,1,
-        0,0,0,226,217,1,0,0,0,226,218,1,0,0,0,226,219,1,0,0,0,226,220,1,
-        0,0,0,226,221,1,0,0,0,226,222,1,0,0,0,226,223,1,0,0,0,226,224,1,
-        0,0,0,226,225,1,0,0,0,227,236,1,0,0,0,228,229,10,10,0,0,229,230,
-        3,30,15,0,230,231,3,28,14,11,231,235,1,0,0,0,232,233,10,11,0,0,233,
-        235,3,34,17,0,234,228,1,0,0,0,234,232,1,0,0,0,235,238,1,0,0,0,236,
-        234,1,0,0,0,236,237,1,0,0,0,237,29,1,0,0,0,238,236,1,0,0,0,239,240,
-        7,1,0,0,240,31,1,0,0,0,241,242,7,2,0,0,242,33,1,0,0,0,243,244,7,
-        3,0,0,244,35,1,0,0,0,245,246,5,41,0,0,246,37,1,0,0,0,23,41,50,54,
-        67,77,83,87,97,108,121,132,142,153,159,164,175,178,190,193,205,226,
-        234,236
+        12,5,108,1,5,1,5,1,6,1,6,1,6,1,6,1,6,1,6,1,6,1,6,4,6,121,8,6,11,
+        6,12,6,122,1,6,1,6,1,7,1,7,1,7,1,7,1,7,4,7,132,8,7,11,7,12,7,133,
+        1,7,1,7,1,8,1,8,1,8,1,8,4,8,142,8,8,11,8,12,8,143,1,8,1,8,1,8,1,
+        9,1,9,1,9,1,9,1,9,1,9,3,9,155,8,9,1,9,1,9,5,9,159,8,9,10,9,12,9,
+        162,9,9,1,9,1,9,3,9,166,8,9,1,9,1,9,1,10,1,10,1,10,1,10,1,10,5,10,
+        175,8,10,10,10,12,10,178,9,10,3,10,180,8,10,1,10,1,10,1,11,1,11,
+        1,11,1,11,1,11,1,11,5,11,190,8,11,10,11,12,11,193,9,11,3,11,195,
+        8,11,1,11,1,11,1,11,1,11,1,11,1,11,1,12,1,12,1,12,1,12,3,12,207,
+        8,12,1,13,1,13,1,14,1,14,1,14,1,14,1,14,1,14,1,14,1,14,1,14,1,14,
+        1,14,1,14,1,14,1,14,1,14,1,14,1,14,3,14,228,8,14,1,14,1,14,1,14,
+        1,14,1,14,1,14,5,14,236,8,14,10,14,12,14,239,9,14,1,15,1,15,1,16,
+        1,16,1,17,1,17,1,18,1,18,1,18,0,1,28,19,0,2,4,6,8,10,12,14,16,18,
+        20,22,24,26,28,30,32,34,36,0,4,1,0,58,60,2,0,5,18,53,54,2,0,5,6,
+        35,35,1,0,55,57,268,0,39,1,0,0,0,2,45,1,0,0,0,4,67,1,0,0,0,6,69,
+        1,0,0,0,8,89,1,0,0,0,10,101,1,0,0,0,12,112,1,0,0,0,14,126,1,0,0,
+        0,16,137,1,0,0,0,18,148,1,0,0,0,20,169,1,0,0,0,22,183,1,0,0,0,24,
+        202,1,0,0,0,26,208,1,0,0,0,28,227,1,0,0,0,30,240,1,0,0,0,32,242,
+        1,0,0,0,34,244,1,0,0,0,36,246,1,0,0,0,38,40,3,2,1,0,39,38,1,0,0,
+        0,40,41,1,0,0,0,41,39,1,0,0,0,41,42,1,0,0,0,42,43,1,0,0,0,43,44,
+        5,0,0,1,44,1,1,0,0,0,45,50,3,4,2,0,46,47,5,51,0,0,47,49,3,4,2,0,
+        48,46,1,0,0,0,49,52,1,0,0,0,50,48,1,0,0,0,50,51,1,0,0,0,51,54,1,
+        0,0,0,52,50,1,0,0,0,53,55,5,51,0,0,54,53,1,0,0,0,54,55,1,0,0,0,55,
+        56,1,0,0,0,56,57,5,52,0,0,57,3,1,0,0,0,58,68,3,6,3,0,59,68,3,12,
+        6,0,60,68,3,14,7,0,61,68,3,16,8,0,62,68,3,20,10,0,63,68,3,24,12,
+        0,64,68,3,22,11,0,65,68,3,36,18,0,66,68,3,28,14,0,67,58,1,0,0,0,
+        67,59,1,0,0,0,67,60,1,0,0,0,67,61,1,0,0,0,67,62,1,0,0,0,67,63,1,
+        0,0,0,67,64,1,0,0,0,67,65,1,0,0,0,67,66,1,0,0,0,68,5,1,0,0,0,69,
+        70,5,24,0,0,70,71,3,28,14,0,71,72,5,50,0,0,72,73,5,52,0,0,73,75,
+        5,1,0,0,74,76,3,2,1,0,75,74,1,0,0,0,76,77,1,0,0,0,77,75,1,0,0,0,
+        77,78,1,0,0,0,78,79,1,0,0,0,79,83,5,2,0,0,80,82,3,8,4,0,81,80,1,
+        0,0,0,82,85,1,0,0,0,83,81,1,0,0,0,83,84,1,0,0,0,84,87,1,0,0,0,85,
+        83,1,0,0,0,86,88,3,10,5,0,87,86,1,0,0,0,87,88,1,0,0,0,88,7,1,0,0,
+        0,89,90,5,25,0,0,90,91,3,28,14,0,91,92,5,50,0,0,92,93,5,52,0,0,93,
+        95,5,1,0,0,94,96,3,2,1,0,95,94,1,0,0,0,96,97,1,0,0,0,97,95,1,0,0,
+        0,97,98,1,0,0,0,98,99,1,0,0,0,99,100,5,2,0,0,100,9,1,0,0,0,101,102,
+        5,26,0,0,102,103,5,50,0,0,103,104,5,52,0,0,104,106,5,1,0,0,105,107,
+        3,2,1,0,106,105,1,0,0,0,107,108,1,0,0,0,108,106,1,0,0,0,108,109,
+        1,0,0,0,109,110,1,0,0,0,110,111,5,2,0,0,111,11,1,0,0,0,112,113,5,
+        28,0,0,113,114,3,26,13,0,114,115,5,29,0,0,115,116,3,28,14,0,116,
+        117,5,50,0,0,117,118,5,52,0,0,118,120,5,1,0,0,119,121,3,2,1,0,120,
+        119,1,0,0,0,121,122,1,0,0,0,122,120,1,0,0,0,122,123,1,0,0,0,123,
+        124,1,0,0,0,124,125,5,2,0,0,125,13,1,0,0,0,126,127,5,27,0,0,127,
+        128,3,28,14,0,128,129,5,50,0,0,129,131,5,1,0,0,130,132,3,4,2,0,131,
+        130,1,0,0,0,132,133,1,0,0,0,133,131,1,0,0,0,133,134,1,0,0,0,134,
+        135,1,0,0,0,135,136,5,2,0,0,136,15,1,0,0,0,137,138,5,30,0,0,138,
+        139,5,50,0,0,139,141,5,1,0,0,140,142,3,4,2,0,141,140,1,0,0,0,142,
+        143,1,0,0,0,143,141,1,0,0,0,143,144,1,0,0,0,144,145,1,0,0,0,145,
+        146,5,2,0,0,146,147,3,18,9,0,147,17,1,0,0,0,148,149,5,32,0,0,149,
+        150,3,28,14,0,150,151,5,50,0,0,151,160,5,1,0,0,152,154,3,4,2,0,153,
+        155,5,51,0,0,154,153,1,0,0,0,154,155,1,0,0,0,155,156,1,0,0,0,156,
+        157,5,52,0,0,157,159,1,0,0,0,158,152,1,0,0,0,159,162,1,0,0,0,160,
+        158,1,0,0,0,160,161,1,0,0,0,161,163,1,0,0,0,162,160,1,0,0,0,163,
+        165,3,4,2,0,164,166,5,51,0,0,165,164,1,0,0,0,165,166,1,0,0,0,166,
+        167,1,0,0,0,167,168,5,2,0,0,168,19,1,0,0,0,169,170,3,26,13,0,170,
+        179,5,44,0,0,171,176,3,28,14,0,172,173,5,49,0,0,173,175,3,28,14,
+        0,174,172,1,0,0,0,175,178,1,0,0,0,176,174,1,0,0,0,176,177,1,0,0,
+        0,177,180,1,0,0,0,178,176,1,0,0,0,179,171,1,0,0,0,179,180,1,0,0,
+        0,180,181,1,0,0,0,181,182,5,45,0,0,182,21,1,0,0,0,183,184,5,20,0,
+        0,184,185,3,26,13,0,185,194,5,44,0,0,186,191,3,26,13,0,187,188,5,
+        49,0,0,188,190,3,26,13,0,189,187,1,0,0,0,190,193,1,0,0,0,191,189,
+        1,0,0,0,191,192,1,0,0,0,192,195,1,0,0,0,193,191,1,0,0,0,194,186,
+        1,0,0,0,194,195,1,0,0,0,195,196,1,0,0,0,196,197,5,45,0,0,197,198,
+        5,50,0,0,198,199,5,1,0,0,199,200,3,4,2,0,200,201,5,2,0,0,201,23,
+        1,0,0,0,202,203,3,26,13,0,203,204,5,19,0,0,204,206,3,28,14,0,205,
+        207,5,51,0,0,206,205,1,0,0,0,206,207,1,0,0,0,207,25,1,0,0,0,208,
+        209,7,0,0,0,209,27,1,0,0,0,210,211,6,14,-1,0,211,212,5,44,0,0,212,
+        213,3,28,14,0,213,214,5,45,0,0,214,228,1,0,0,0,215,216,3,32,16,0,
+        216,217,3,28,14,12,217,228,1,0,0,0,218,228,3,26,13,0,219,228,3,20,
+        10,0,220,228,5,62,0,0,221,228,5,61,0,0,222,228,5,63,0,0,223,228,
+        5,64,0,0,224,228,5,38,0,0,225,228,5,39,0,0,226,228,5,65,0,0,227,
+        210,1,0,0,0,227,215,1,0,0,0,227,218,1,0,0,0,227,219,1,0,0,0,227,
+        220,1,0,0,0,227,221,1,0,0,0,227,222,1,0,0,0,227,223,1,0,0,0,227,
+        224,1,0,0,0,227,225,1,0,0,0,227,226,1,0,0,0,228,237,1,0,0,0,229,
+        230,10,10,0,0,230,231,3,30,15,0,231,232,3,28,14,11,232,236,1,0,0,
+        0,233,234,10,11,0,0,234,236,3,34,17,0,235,229,1,0,0,0,235,233,1,
+        0,0,0,236,239,1,0,0,0,237,235,1,0,0,0,237,238,1,0,0,0,238,29,1,0,
+        0,0,239,237,1,0,0,0,240,241,7,1,0,0,241,31,1,0,0,0,242,243,7,2,0,
+        0,243,33,1,0,0,0,244,245,7,3,0,0,245,35,1,0,0,0,246,247,5,41,0,0,
+        247,37,1,0,0,0,23,41,50,54,67,77,83,87,97,108,122,133,143,154,160,
+        165,176,179,191,194,206,227,235,237
     ]
 
 class QuantumLanguageParser ( Parser ):
@@ -803,17 +803,20 @@ class QuantumLanguageParser ( Parser ):
         def COLON(self):
             return self.getToken(QuantumLanguageParser.COLON, 0)
 
+        def NEWLINE(self):
+            return self.getToken(QuantumLanguageParser.NEWLINE, 0)
+
         def INDENT(self):
             return self.getToken(QuantumLanguageParser.INDENT, 0)
 
         def DEDENT(self):
             return self.getToken(QuantumLanguageParser.DEDENT, 0)
 
-        def sentence(self, i:int=None):
+        def statement(self, i:int=None):
             if i is None:
-                return self.getTypedRuleContexts(QuantumLanguageParser.SentenceContext)
+                return self.getTypedRuleContexts(QuantumLanguageParser.StatementContext)
             else:
-                return self.getTypedRuleContext(QuantumLanguageParser.SentenceContext,i)
+                return self.getTypedRuleContext(QuantumLanguageParser.StatementContext,i)
 
 
         def getRuleIndex(self):
@@ -846,20 +849,22 @@ class QuantumLanguageParser ( Parser ):
             self.state = 116
             self.match(QuantumLanguageParser.COLON)
             self.state = 117
+            self.match(QuantumLanguageParser.NEWLINE)
+            self.state = 118
             self.match(QuantumLanguageParser.INDENT)
-            self.state = 119 
+            self.state = 120 
             self._errHandler.sync(self)
             _la = self._input.LA(1)
             while True:
-                self.state = 118
-                self.sentence()
-                self.state = 121 
+                self.state = 119
+                self.statement()
+                self.state = 122 
                 self._errHandler.sync(self)
                 _la = self._input.LA(1)
                 if not ((((_la - 5)) & ~0x3f) == 0 and ((1 << (_la - 5)) & 2296836455324483587) != 0):
                     break
 
-            self.state = 123
+            self.state = 124
             self.match(QuantumLanguageParser.DEDENT)
         except RecognitionException as re:
             localctx.exception = re
@@ -919,27 +924,27 @@ class QuantumLanguageParser ( Parser ):
         self._la = 0 # Token type
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 125
-            self.match(QuantumLanguageParser.WHILE)
             self.state = 126
-            self.expression(0)
+            self.match(QuantumLanguageParser.WHILE)
             self.state = 127
-            self.match(QuantumLanguageParser.COLON)
+            self.expression(0)
             self.state = 128
+            self.match(QuantumLanguageParser.COLON)
+            self.state = 129
             self.match(QuantumLanguageParser.INDENT)
-            self.state = 130 
+            self.state = 131 
             self._errHandler.sync(self)
             _la = self._input.LA(1)
             while True:
-                self.state = 129
+                self.state = 130
                 self.sentence()
-                self.state = 132 
+                self.state = 133 
                 self._errHandler.sync(self)
                 _la = self._input.LA(1)
                 if not ((((_la - 5)) & ~0x3f) == 0 and ((1 << (_la - 5)) & 2296836455324483587) != 0):
                     break
 
-            self.state = 134
+            self.state = 135
             self.match(QuantumLanguageParser.DEDENT)
         except RecognitionException as re:
             localctx.exception = re
@@ -999,27 +1004,27 @@ class QuantumLanguageParser ( Parser ):
         self._la = 0 # Token type
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 136
-            self.match(QuantumLanguageParser.TRY)
             self.state = 137
-            self.match(QuantumLanguageParser.COLON)
+            self.match(QuantumLanguageParser.TRY)
             self.state = 138
+            self.match(QuantumLanguageParser.COLON)
+            self.state = 139
             self.match(QuantumLanguageParser.INDENT)
-            self.state = 140 
+            self.state = 141 
             self._errHandler.sync(self)
             _la = self._input.LA(1)
             while True:
-                self.state = 139
+                self.state = 140
                 self.sentence()
-                self.state = 142 
+                self.state = 143 
                 self._errHandler.sync(self)
                 _la = self._input.LA(1)
                 if not ((((_la - 5)) & ~0x3f) == 0 and ((1 << (_la - 5)) & 2296836455324483587) != 0):
                     break
 
-            self.state = 144
-            self.match(QuantumLanguageParser.DEDENT)
             self.state = 145
+            self.match(QuantumLanguageParser.DEDENT)
+            self.state = 146
             self.except_()
         except RecognitionException as re:
             localctx.exception = re
@@ -1091,47 +1096,47 @@ class QuantumLanguageParser ( Parser ):
         self._la = 0 # Token type
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 147
-            self.match(QuantumLanguageParser.EXCEPT)
             self.state = 148
-            self.expression(0)
+            self.match(QuantumLanguageParser.EXCEPT)
             self.state = 149
-            self.match(QuantumLanguageParser.COLON)
+            self.expression(0)
             self.state = 150
+            self.match(QuantumLanguageParser.COLON)
+            self.state = 151
             self.match(QuantumLanguageParser.INDENT)
-            self.state = 159
+            self.state = 160
             self._errHandler.sync(self)
             _alt = self._interp.adaptivePredict(self._input,13,self._ctx)
             while _alt!=2 and _alt!=ATN.INVALID_ALT_NUMBER:
                 if _alt==1:
-                    self.state = 151
+                    self.state = 152
                     self.sentence()
 
-                    self.state = 153
+                    self.state = 154
                     self._errHandler.sync(self)
                     _la = self._input.LA(1)
                     if _la==51:
-                        self.state = 152
+                        self.state = 153
                         self.match(QuantumLanguageParser.SEMI_COLON)
 
 
-                    self.state = 155
+                    self.state = 156
                     self.match(QuantumLanguageParser.NEWLINE) 
-                self.state = 161
+                self.state = 162
                 self._errHandler.sync(self)
                 _alt = self._interp.adaptivePredict(self._input,13,self._ctx)
 
-            self.state = 162
+            self.state = 163
             self.sentence()
-            self.state = 164
+            self.state = 165
             self._errHandler.sync(self)
             _la = self._input.LA(1)
             if _la==51:
-                self.state = 163
+                self.state = 164
                 self.match(QuantumLanguageParser.SEMI_COLON)
 
 
-            self.state = 166
+            self.state = 167
             self.match(QuantumLanguageParser.DEDENT)
         except RecognitionException as re:
             localctx.exception = re
@@ -1191,31 +1196,31 @@ class QuantumLanguageParser ( Parser ):
         self._la = 0 # Token type
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 168
-            self.identifier()
             self.state = 169
+            self.identifier()
+            self.state = 170
             self.match(QuantumLanguageParser.OPEN_PAREN)
-            self.state = 178
+            self.state = 179
             self._errHandler.sync(self)
             _la = self._input.LA(1)
             if (((_la - 5)) & ~0x3f) == 0 and ((1 << (_la - 5)) & 2296836386558312451) != 0:
-                self.state = 170
+                self.state = 171
                 self.expression(0)
-                self.state = 175
+                self.state = 176
                 self._errHandler.sync(self)
                 _la = self._input.LA(1)
                 while _la==49:
-                    self.state = 171
-                    self.match(QuantumLanguageParser.COMMA)
                     self.state = 172
+                    self.match(QuantumLanguageParser.COMMA)
+                    self.state = 173
                     self.expression(0)
-                    self.state = 177
+                    self.state = 178
                     self._errHandler.sync(self)
                     _la = self._input.LA(1)
 
 
 
-            self.state = 180
+            self.state = 181
             self.match(QuantumLanguageParser.CLOSE_PAREN)
         except RecognitionException as re:
             localctx.exception = re
@@ -1287,41 +1292,41 @@ class QuantumLanguageParser ( Parser ):
         self._la = 0 # Token type
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 182
-            self.match(QuantumLanguageParser.DEF)
             self.state = 183
-            self.identifier()
+            self.match(QuantumLanguageParser.DEF)
             self.state = 184
+            self.identifier()
+            self.state = 185
             self.match(QuantumLanguageParser.OPEN_PAREN)
-            self.state = 193
+            self.state = 194
             self._errHandler.sync(self)
             _la = self._input.LA(1)
             if ((_la) & ~0x3f) == 0 and ((1 << _la) & 2017612633061982208) != 0:
-                self.state = 185
+                self.state = 186
                 self.identifier()
-                self.state = 190
+                self.state = 191
                 self._errHandler.sync(self)
                 _la = self._input.LA(1)
                 while _la==49:
-                    self.state = 186
-                    self.match(QuantumLanguageParser.COMMA)
                     self.state = 187
+                    self.match(QuantumLanguageParser.COMMA)
+                    self.state = 188
                     self.identifier()
-                    self.state = 192
+                    self.state = 193
                     self._errHandler.sync(self)
                     _la = self._input.LA(1)
 
 
 
-            self.state = 195
-            self.match(QuantumLanguageParser.CLOSE_PAREN)
             self.state = 196
-            self.match(QuantumLanguageParser.COLON)
+            self.match(QuantumLanguageParser.CLOSE_PAREN)
             self.state = 197
-            self.match(QuantumLanguageParser.INDENT)
+            self.match(QuantumLanguageParser.COLON)
             self.state = 198
-            self.sentence()
+            self.match(QuantumLanguageParser.INDENT)
             self.state = 199
+            self.sentence()
+            self.state = 200
             self.match(QuantumLanguageParser.DEDENT)
         except RecognitionException as re:
             localctx.exception = re
@@ -1371,17 +1376,17 @@ class QuantumLanguageParser ( Parser ):
         self.enterRule(localctx, 24, self.RULE_assign)
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 201
-            self.identifier()
             self.state = 202
-            self.match(QuantumLanguageParser.ASSIGN)
+            self.identifier()
             self.state = 203
+            self.match(QuantumLanguageParser.ASSIGN)
+            self.state = 204
             self.expression(0)
-            self.state = 205
+            self.state = 206
             self._errHandler.sync(self)
             la_ = self._interp.adaptivePredict(self._input,19,self._ctx)
             if la_ == 1:
-                self.state = 204
+                self.state = 205
                 self.match(QuantumLanguageParser.SEMI_COLON)
 
 
@@ -1429,7 +1434,7 @@ class QuantumLanguageParser ( Parser ):
         self._la = 0 # Token type
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 207
+            self.state = 208
             _la = self._input.LA(1)
             if not(((_la) & ~0x3f) == 0 and ((1 << _la) & 2017612633061982208) != 0):
                 self._errHandler.recoverInline(self)
@@ -1526,73 +1531,73 @@ class QuantumLanguageParser ( Parser ):
         self.enterRecursionRule(localctx, 28, self.RULE_expression, _p)
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 226
+            self.state = 227
             self._errHandler.sync(self)
             la_ = self._interp.adaptivePredict(self._input,20,self._ctx)
             if la_ == 1:
-                self.state = 210
-                self.match(QuantumLanguageParser.OPEN_PAREN)
                 self.state = 211
-                self.expression(0)
+                self.match(QuantumLanguageParser.OPEN_PAREN)
                 self.state = 212
+                self.expression(0)
+                self.state = 213
                 self.match(QuantumLanguageParser.CLOSE_PAREN)
                 pass
 
             elif la_ == 2:
-                self.state = 214
-                self.prefix_unitary_operator()
                 self.state = 215
+                self.prefix_unitary_operator()
+                self.state = 216
                 self.expression(12)
                 pass
 
             elif la_ == 3:
-                self.state = 217
+                self.state = 218
                 self.identifier()
                 pass
 
             elif la_ == 4:
-                self.state = 218
+                self.state = 219
                 self.function_execution()
                 pass
 
             elif la_ == 5:
-                self.state = 219
+                self.state = 220
                 self.match(QuantumLanguageParser.INTEGER_LITERAL)
                 pass
 
             elif la_ == 6:
-                self.state = 220
+                self.state = 221
                 self.match(QuantumLanguageParser.STRING_LITERAL)
                 pass
 
             elif la_ == 7:
-                self.state = 221
+                self.state = 222
                 self.match(QuantumLanguageParser.IMAGINARY_LITERAL)
                 pass
 
             elif la_ == 8:
-                self.state = 222
+                self.state = 223
                 self.match(QuantumLanguageParser.FLOAT_LITERAL)
                 pass
 
             elif la_ == 9:
-                self.state = 223
+                self.state = 224
                 self.match(QuantumLanguageParser.TRUE)
                 pass
 
             elif la_ == 10:
-                self.state = 224
+                self.state = 225
                 self.match(QuantumLanguageParser.FALSE)
                 pass
 
             elif la_ == 11:
-                self.state = 225
+                self.state = 226
                 self.match(QuantumLanguageParser.QUBIT_STATE_LITERAL)
                 pass
 
 
             self._ctx.stop = self._input.LT(-1)
-            self.state = 236
+            self.state = 237
             self._errHandler.sync(self)
             _alt = self._interp.adaptivePredict(self._input,22,self._ctx)
             while _alt!=2 and _alt!=ATN.INVALID_ALT_NUMBER:
@@ -1600,35 +1605,35 @@ class QuantumLanguageParser ( Parser ):
                     if self._parseListeners is not None:
                         self.triggerExitRuleEvent()
                     _prevctx = localctx
-                    self.state = 234
+                    self.state = 235
                     self._errHandler.sync(self)
                     la_ = self._interp.adaptivePredict(self._input,21,self._ctx)
                     if la_ == 1:
                         localctx = QuantumLanguageParser.ExpressionContext(self, _parentctx, _parentState)
                         self.pushNewRecursionContext(localctx, _startState, self.RULE_expression)
-                        self.state = 228
+                        self.state = 229
                         if not self.precpred(self._ctx, 10):
                             from antlr4.error.Errors import FailedPredicateException
                             raise FailedPredicateException(self, "self.precpred(self._ctx, 10)")
-                        self.state = 229
-                        self.binary_operator()
                         self.state = 230
+                        self.binary_operator()
+                        self.state = 231
                         self.expression(11)
                         pass
 
                     elif la_ == 2:
                         localctx = QuantumLanguageParser.ExpressionContext(self, _parentctx, _parentState)
                         self.pushNewRecursionContext(localctx, _startState, self.RULE_expression)
-                        self.state = 232
+                        self.state = 233
                         if not self.precpred(self._ctx, 11):
                             from antlr4.error.Errors import FailedPredicateException
                             raise FailedPredicateException(self, "self.precpred(self._ctx, 11)")
-                        self.state = 233
+                        self.state = 234
                         self.suffix_unitary_operator()
                         pass
 
              
-                self.state = 238
+                self.state = 239
                 self._errHandler.sync(self)
                 _alt = self._interp.adaptivePredict(self._input,22,self._ctx)
 
@@ -1715,7 +1720,7 @@ class QuantumLanguageParser ( Parser ):
         self._la = 0 # Token type
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 239
+            self.state = 240
             _la = self._input.LA(1)
             if not(((_la) & ~0x3f) == 0 and ((1 << _la) & 27021597764747232) != 0):
                 self._errHandler.recoverInline(self)
@@ -1766,7 +1771,7 @@ class QuantumLanguageParser ( Parser ):
         self._la = 0 # Token type
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 241
+            self.state = 242
             _la = self._input.LA(1)
             if not(((_la) & ~0x3f) == 0 and ((1 << _la) & 34359738464) != 0):
                 self._errHandler.recoverInline(self)
@@ -1817,7 +1822,7 @@ class QuantumLanguageParser ( Parser ):
         self._la = 0 # Token type
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 243
+            self.state = 244
             _la = self._input.LA(1)
             if not(((_la) & ~0x3f) == 0 and ((1 << _la) & 252201579132747776) != 0):
                 self._errHandler.recoverInline(self)
@@ -1861,7 +1866,7 @@ class QuantumLanguageParser ( Parser ):
         self.enterRule(localctx, 36, self.RULE_pass)
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 245
+            self.state = 246
             self.match(QuantumLanguageParser.PASS)
         except RecognitionException as re:
             localctx.exception = re
