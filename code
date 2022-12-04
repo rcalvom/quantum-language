@@ -1,1 +1,7 @@
-a=0
+if True:
+    pass
+elif True:
+    pass
+else:
+    pass
+

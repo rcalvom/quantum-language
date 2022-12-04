@@ -5,82 +5,53 @@ options {
 }
 
 start
- //   :(sentence (SEMI_COLON? NEWLINE))* (sentence SEMI_COLON?) EOF
-//    | function_declaration EOF
-//    : sentence | complex_sentence
-    : sentence
+    : statement+ EOF
     ;
+
+statement
+    : sentence (';' sentence)* (';')? NEWLINE;
 
 sentence
     : if
     | for
     | while
     | try
-    | matmul
-    | kronecker
-    | hermitian
-    | conjugate
-    | transpose
     | function_execution
     | assign
     | function_declaration
+    | pass
     ;
 
 
 if
-    : IF expression COLON INDENT (sentence (SEMI_COLON? NEWLINE))* (sentence SEMI_COLON?) DEDENT
+    : IF expression COLON NEWLINE INDENT statement+ DEDENT
     (elif)*
     (else)?
     ;
 
 elif
-    : ELIF expression COLON INDENT (sentence (SEMI_COLON? NEWLINE))* (sentence SEMI_COLON?) DEDENT
+    : ELIF expression COLON NEWLINE INDENT statement+ DEDENT
     ;
 
 else
-    : ELSE COLON INDENT (sentence (SEMI_COLON? NEWLINE))* (sentence SEMI_COLON?) DEDENT
+    : ELSE COLON NEWLINE INDENT statement+ DEDENT
     ;
 
 for
-    : FOR identifier IN expression COLON INDENT (sentence (SEMI_COLON? NEWLINE))* (sentence SEMI_COLON?) DEDENT
+    : FOR identifier IN expression COLON INDENT sentence+ DEDENT
     ;
 
 while
-    : WHILE expression COLON INDENT (sentence (SEMI_COLON? NEWLINE))* (sentence SEMI_COLON?) DEDENT
+    : WHILE expression COLON INDENT sentence+ DEDENT
     ;
 
 try
-    : TRY COLON INDENT (sentence (SEMI_COLON? NEWLINE))* (sentence SEMI_COLON?) DEDENT
-    except
+    : TRY COLON INDENT sentence+ DEDENT except
     ;
 
 except
     : EXCEPT expression COLON INDENT (sentence (SEMI_COLON? NEWLINE))* (sentence SEMI_COLON?) DEDENT
     ;
-
-matmul
-    : MATMUL identifier identifier
-    ;
-
-
-(MATMUL | KRONECKER) identifier
-
-kronecker
-    : KRONECKER identifier identifier
-    ;
-
-hermitian
-    : HERMITIAN identifier
-    ;
-
-conjugate
-    : CONJUGATE identifier
-    ;
-
-transpose
-    : TRANSPOSE identifier
-    ;
-
 
 function_execution
     : identifier OPEN_PAREN (expression (COMMA expression)*)? CLOSE_PAREN
@@ -92,16 +63,19 @@ function_declaration
 
 
 assign
-    : identifier ASSIGN expression;
+    : identifier ASSIGN expression SEMI_COLON?;
 
 identifier
-    : IDENTIFIER (DOT IDENTIFIER)*
+    : IDENTIFIER
+    | QUBIT_IDENTIFIER
+    | QUBIT_TRANSPOSE_IDENTIFIER
     ;
 
 expression
     : OPEN_PAREN expression CLOSE_PAREN
+    | prefix_unitary_operator expression
+    | expression suffix_unitary_operator
     | expression binary_operator expression
-    | unitary_operator expression
     | identifier
     | function_execution
     | INTEGER_LITERAL
@@ -120,6 +94,8 @@ binary_operator
     | IDIV
     | MOD
     | POWER
+    | MATMUL
+    | KRONECKER
     | LESS_THAN
     | GREATER_THAN
     | EQUALS
@@ -129,8 +105,18 @@ binary_operator
     | NOT_EQ_2
     ;
 
-unitary_operator
+prefix_unitary_operator
     : ADD
     | MINUS
     | NOT
+    ;
+
+suffix_unitary_operator
+    : HERMITIAN
+    | CONJUGATE
+    | TRANSPOSE
+    ;
+
+pass
+    : PASS
     ;
