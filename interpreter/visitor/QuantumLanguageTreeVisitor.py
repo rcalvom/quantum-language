@@ -4,6 +4,9 @@
 from recognition.generated.QuantumLanguageParser import QuantumLanguageParser
 from recognition.generated.QuantumLanguageParserVisitor import QuantumLanguageParserVisitor
 
+# NumPy
+import numpy as np
+
 
 class QuantumLanguageTreeVisitor(QuantumLanguageParserVisitor):
     functions = {}
@@ -38,6 +41,11 @@ class QuantumLanguageTreeVisitor(QuantumLanguageParserVisitor):
             self.visitAssign(ctx.assign())
         elif ctx.function_declaration() is not None:
             self.visitFunction_declaration(ctx.function_declaration())
+        elif ctx.pass_() is not None:
+            self.visitPass(ctx.pass_())
+        elif ctx.expression() is not None:
+            self.visitExpression(ctx.expression())
+
 
     # def visitMatMul(self, ctx: QuantumLanguageParser.MatmulContext):
     #    first = ctx.identifier(0).getText()
@@ -78,32 +86,34 @@ class QuantumLanguageTreeVisitor(QuantumLanguageParserVisitor):
         if ctx.binary_operator():
             left = self.visitExpression(ctx.expression(0))
             right = self.visitExpression(ctx.expression(1))
-            bin_operator = ctx.binary_operator().getText()
-            if bin_operator == '+':
+            if ctx.binary_operator().ADD():
                 return left + right
-            if bin_operator == '-':
+            if ctx.binary_operator().MINUS():
                 return left - right
-            if bin_operator == '*':
+            if ctx.binary_operator().STAR() == '*':
                 return left * right
-            if bin_operator == '/':
+            if ctx.binary_operator().DIV():
                 return left / right
-            if bin_operator == '//':
+            if ctx.binary_operator().IDIV():
                 return left // right
-            if bin_operator == '%':
+            if ctx.binary_operator().MOD():
                 return left % right
-            if bin_operator == '**':
+            if ctx.binary_operator().POWER():
                 return left ** right
-            if bin_operator == '<':
+            if ctx.binary_operator().MATMUL():
+                return left @ right
+            # TODO: KRON
+            if ctx.binary_operator().LESS_THAN():
                 return left < right
-            if bin_operator == '>':
+            if ctx.binary_operator().GREATER_THAN():
                 return left > right
-            if bin_operator == '==':
+            if ctx.binary_operator().EQUALS():
                 return left == right
-            if bin_operator == '>=':
+            if ctx.binary_operator().GT_EQ():
                 return left >= right
-            if bin_operator == '<=':
+            if ctx.binary_operator().LT_EQ():
                 return left <= right
-            if bin_operator == '<>' or bin_operator == '!=':
+            if ctx.binary_operator().NOT_EQ_1() or ctx.binary_operator().NOT_EQ_2():
                 return left != right
         # if ctx.unitary_operator():
         #     u_operator = ctx.unitary_operator().getText()
@@ -150,7 +160,7 @@ class QuantumLanguageTreeVisitor(QuantumLanguageParserVisitor):
 
     def visitElif(self, ctx: QuantumLanguageParser.ElifContext):
         expression = self.visitExpression(ctx.expression())
-        if expression is not bool:
+        if type(expression) != bool:
             raise Exception("no boolean expression")
         if not expression:
             return False
@@ -196,7 +206,9 @@ class QuantumLanguageTreeVisitor(QuantumLanguageParserVisitor):
             self.visitSentence(sentence)
 
     def visitFunction_execution(self, ctx: QuantumLanguageParser.Function_executionContext):
-        return super().visitFunction_execution(ctx)
+        f = self.functions[ctx.identifier().getText()]
+        f(self.visitExpression(ctx.expression(0)))
+        # TODO mas parámetros
 
     def visitFunction_declaration(self, ctx: QuantumLanguageParser.Function_declarationContext):
         return super().visitFunction_declaration(ctx)

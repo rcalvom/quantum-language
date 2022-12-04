@@ -20,6 +20,7 @@ sentence
     | assign
     | function_declaration
     | pass
+    | expression
     ;
 
 
