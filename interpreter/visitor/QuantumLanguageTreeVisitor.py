@@ -7,8 +7,14 @@ from recognition.generated.QuantumLanguageParserVisitor import QuantumLanguagePa
 # NumPy
 import numpy as np
 
+
+def __print__(*args):
+    return print(*args)
+
+
 def __range__(*args):
     return range(*args)
+
 
 class QuantumLanguageTreeVisitor(QuantumLanguageParserVisitor):
     functions = {}
@@ -16,11 +22,11 @@ class QuantumLanguageTreeVisitor(QuantumLanguageParserVisitor):
 
     def __init__(self):
         self.createFunctions()
-        self.variables = {}
+        self.functions = {}
+        self.variables = {} #TODO: CONSTANTES (COMPUERTAS)
 
     def createFunctions(self):
-        self.functions["print"] = print
-
+        self.functions["print"] = __print__
         self.functions["range"] = __range__
 
     def visitStart(self, ctx: QuantumLanguageParser.StartContext):
@@ -50,100 +56,6 @@ class QuantumLanguageTreeVisitor(QuantumLanguageParserVisitor):
             self.visitPass(ctx.pass_())
         elif ctx.expression() is not None:
             self.visitExpression(ctx.expression())
-
-    # def visitMatMul(self, ctx: QuantumLanguageParser.MatmulContext):
-    #    first = ctx.identifier(0).getText()
-    #    second = ctx.identifier(1).getText()
-    #    if first.isupper() and second.isupper():
-    #        print('se hace el producto')
-    #    else:
-    #        raise Exception('no matrix product')
-
-    # def visitKronecker(self, ctx: QuantumLanguageParser.KroneckerContext):
-    #    first = ctx.identifier(0).getText()
-    #    second = ctx.identifier(1).getText()
-    #    if first.isupper() and second.isupper():
-    #        print('se hace el producto kronecker')
-    #    else:
-    #        raise Exception('no kronecker product')
-
-    # def visitHermitian(self, ctx: QuantumLanguageParser.HermitianContext):
-    #    first = ctx.identifier(0).getText()
-    #    print('se hace la hermitiana de la matriz')
-
-    # def visitConjugate(self, ctx: QuantumLanguageParser.ConjugateContext):
-    #    first = ctx.identifier(0).getText()
-    #    print('se hace la conjugada de la matriz')
-
-    # def visitTranspose(self, ctx: QuantumLanguageParser.TransposeContext):
-    #     first = ctx.identifier(0).getText()
-    #     print('se hace la transpuesta de la matriz')
-
-    def visitAssign(self, ctx: QuantumLanguageParser.AssignContext):
-        self.variables[ctx.identifier().getText()] = self.visitExpression(ctx.expression())
-
-    def visitExpression(self, ctx: QuantumLanguageParser.ExpressionContext):
-        if ctx.OPEN_PAREN():
-            return self.visitExpression(ctx.expression())
-        if ctx.binary_operator():
-            left = self.visitExpression(ctx.expression(0))
-            right = self.visitExpression(ctx.expression(1))
-            if ctx.binary_operator().ADD():
-                return left + right
-            if ctx.binary_operator().MINUS():
-                return left - right
-            if ctx.binary_operator().STAR() == '*':
-                return left * right
-            if ctx.binary_operator().DIV():
-                return left / right
-            if ctx.binary_operator().IDIV():
-                return left // right
-            if ctx.binary_operator().MOD():
-                return left % right
-            if ctx.binary_operator().POWER():
-                return left ** right
-            if ctx.binary_operator().MATMUL():
-                return left @ right
-            if ctx.binary_operator().KRONECKER():
-                return np.kron(left, right)
-            if ctx.binary_operator().LESS_THAN():
-                return left < right
-            if ctx.binary_operator().GREATER_THAN():
-                return left > right
-            if ctx.binary_operator().EQUALS():
-                return left == right
-            if ctx.binary_operator().GT_EQ():
-                return left >= right
-            if ctx.binary_operator().LT_EQ():
-                return left <= right
-            if ctx.binary_operator().NOT_EQ_1() or ctx.binary_operator().NOT_EQ_2():
-                return left != right
-        # if ctx.unitary_operator():
-        #     u_operator = ctx.unitary_operator().getText()
-        #     operand = self.visitExpression(ctx.expression())
-        #     if u_operator == '+':
-        #         return +operand
-        #     if u_operator == '-':
-        #         return -operand
-        #     if u_operator == 'not':
-        #         return not u_operator
-        if ctx.identifier():
-            return self.variables[ctx.identifier().getText()]
-        if ctx.function_execution():
-            return self.visitFunction_execution(ctx.function_execution())
-        if ctx.INTEGER_LITERAL():
-            return int(ctx.INTEGER_LITERAL().getText())
-        if ctx.STRING_LITERAL():
-            return ctx.STRING_LITERAL().getText()[1: -1]
-        if ctx.IMAGINARY_LITERAL():
-            return complex(ctx.IMAGINARY_LITERAL().getText())
-        if ctx.FLOAT_LITERAL():
-            return float(ctx.FLOAT_LITERAL().getText())
-        if ctx.TRUE():
-            return True
-        if ctx.FALSE():
-            return False
-        return ctx.QUBIT_STATE_LITERAL().getText()
 
     def visitIf(self, ctx: QuantumLanguageParser.IfContext):
         expression = self.visitExpression(ctx.expression())
@@ -193,18 +105,18 @@ class QuantumLanguageTreeVisitor(QuantumLanguageParserVisitor):
         while self.visitExpression(ctx.expression()):
             for statement in ctx.statement():
                 self.visitStatement(statement)
-            # TODO : BREAK
+            # TODO: break and continue statement
 
     def visitTry(self, ctx: QuantumLanguageParser.TryContext):
         try:
-            for sentence in ctx.sentence():
-                self.visitSentence(sentence)
+            for statement in ctx.statement():
+                self.visitStatement(statement)
         except Exception:
             self.visitExcept(ctx.except_())
 
     def visitExcept(self, ctx: QuantumLanguageParser.ExceptContext):
-        for sentence in ctx.sentence():
-            self.visitSentence(sentence)
+        for statement in ctx.statement():
+            self.visitStatement(statement)
 
     def visitFunction_execution(self, ctx: QuantumLanguageParser.Function_executionContext):
         f = self.functions[ctx.identifier().getText()]
@@ -212,7 +124,80 @@ class QuantumLanguageTreeVisitor(QuantumLanguageParserVisitor):
         for expression in ctx.expression():
             args.append(self.visitExpression(expression))
         return f(*args)
-        # TODO mas parámetros
 
     def visitFunction_declaration(self, ctx: QuantumLanguageParser.Function_declarationContext):
         return super().visitFunction_declaration(ctx)
+
+    def visitAssign(self, ctx: QuantumLanguageParser.AssignContext):
+        #TODO Qbits
+        self.variables[ctx.identifier().getText()] = self.visitExpression(ctx.expression())
+
+    def visitExpression(self, ctx: QuantumLanguageParser.ExpressionContext):
+        if ctx.OPEN_PAREN() and ctx.CLOSE_PAREN():
+            return self.visitExpression(ctx.expression())
+        if ctx.prefix_unitary_operator():
+            if ctx.prefix_unitary_operator().ADD():
+                return +self.visitExpression(ctx.expression())
+            if ctx.prefix_unitary_operator().MINUS():
+                return -self.visitExpression(ctx.expression())
+            if ctx.prefix_unitary_operator().MINUS():
+                return not self.visitExpression(ctx.expression())
+        if ctx.suffix_unitary_operator():
+            if ctx.suffix_unitary_operator().HERMITIAN():
+                return np.transpose(np.conjugate(self.visitExpression(ctx.expression())))
+            if ctx.suffix_unitary_operator().CONJUGATE():
+                return np.conjugate(self.visitExpression(ctx.expression()))
+            if ctx.suffix_unitary_operator().TRANSPOSE():
+                return np.transpose(self.visitExpression(ctx.expression()))
+        if ctx.binary_operator():
+            left = self.visitExpression(ctx.expression(0))
+            right = self.visitExpression(ctx.expression(1))
+            if ctx.binary_operator().ADD():
+                return left + right
+            if ctx.binary_operator().MINUS():
+                return left - right
+            if ctx.binary_operator().STAR():
+                return left * right
+            if ctx.binary_operator().DIV():
+                return left / right
+            if ctx.binary_operator().IDIV():
+                return left // right
+            if ctx.binary_operator().MOD():
+                return left % right
+            if ctx.binary_operator().POWER():
+                return left ** right
+            if ctx.binary_operator().MATMUL():
+                return left @ right
+            if ctx.binary_operator().KRONECKER():
+                return np.kron(left, right)
+            if ctx.binary_operator().LESS_THAN():
+                return left < right
+            if ctx.binary_operator().GREATER_THAN():
+                return left > right
+            if ctx.binary_operator().EQUALS():
+                return left == right
+            if ctx.binary_operator().GT_EQ():
+                return left >= right
+            if ctx.binary_operator().LT_EQ():
+                return left <= right
+            if ctx.binary_operator().NOT_EQ_1() or ctx.binary_operator().NOT_EQ_2():
+                return left != right
+        if ctx.identifier():
+            return self.variables[ctx.identifier().getText()]
+        if ctx.function_execution():
+            return self.visitFunction_execution(ctx.function_execution())
+        if ctx.INTEGER_LITERAL():
+            return int(ctx.INTEGER_LITERAL().getText())
+        if ctx.STRING_LITERAL():
+            return ctx.STRING_LITERAL().getText()[1: -1]
+        if ctx.IMAGINARY_LITERAL():
+            return complex(ctx.IMAGINARY_LITERAL().getText())
+        #TODO Revisar numeros complejos
+        if ctx.FLOAT_LITERAL():
+            return float(ctx.FLOAT_LITERAL().getText())
+        if ctx.TRUE():
+            return True
+        if ctx.FALSE():
+            return False
+        if ctx.QUBIT_STATE_LITERAL().getText():
+            return ctx.QUBIT_STATE_LITERAL().getText()

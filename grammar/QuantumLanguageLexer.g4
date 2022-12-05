@@ -184,8 +184,8 @@ OPEN_PAREN : '(';
 CLOSE_PAREN : ')';
 OPEN_BRACK : '[';
 CLOSE_BRACK : ']';
-//OPEN_BRACE : '{';
-//CLOSE_BRACE : '}';
+OPEN_BRACE : '{';
+CLOSE_BRACE : '}';
 
 /* Structural literals */
 DOT : '.';
@@ -233,13 +233,6 @@ else:
     }
  ;
 
-
-
-// tokens { INDENT, DEDENT }
-//INDENT: '{';
-//DEDENT: '}';
-
-
 // Linear Algebra Symbols
 MATMUL : '@';
 KRONECKER : '(X)';
@@ -273,7 +266,7 @@ INTEGER_LITERAL
 //TODO: ADD BIN OCTAL HEX NUMBERS
 
 IMAGINARY_LITERAL
-    : (FLOAT_LITERAL|INTEGER_LITERAL) [iI]
+    : (FLOAT_LITERAL|INTEGER_LITERAL) [jJ]
     ;
 
 FLOAT_LITERAL

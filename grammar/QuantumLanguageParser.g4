@@ -47,11 +47,11 @@ while
     ;
 
 try
-    : TRY COLON INDENT sentence+ DEDENT except
+    : TRY COLON NEWLINE INDENT statement+ DEDENT except
     ;
 
 except
-    : EXCEPT expression COLON INDENT (sentence (SEMI_COLON? NEWLINE))* (sentence SEMI_COLON?) DEDENT
+    : EXCEPT expression COLON NEWLINE INDENT statement+ DEDENT
     ;
 
 function_execution
