@@ -43,7 +43,7 @@ for
     ;
 
 while
-    : WHILE expression COLON INDENT sentence+ DEDENT
+    : WHILE expression COLON NEWLINE INDENT statement+ DEDENT
     ;
 
 try
@@ -61,7 +61,6 @@ function_execution
 function_declaration
     : DEF identifier OPEN_PAREN (identifier (COMMA identifier)*)? CLOSE_PAREN COLON INDENT sentence DEDENT
     ;
-
 
 assign
     : identifier ASSIGN expression SEMI_COLON?;

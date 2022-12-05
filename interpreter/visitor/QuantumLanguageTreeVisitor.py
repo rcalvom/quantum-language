@@ -7,6 +7,8 @@ from recognition.generated.QuantumLanguageParserVisitor import QuantumLanguagePa
 # NumPy
 import numpy as np
 
+def __range__(*args):
+    return range(*args)
 
 class QuantumLanguageTreeVisitor(QuantumLanguageParserVisitor):
     functions = {}
@@ -19,7 +21,7 @@ class QuantumLanguageTreeVisitor(QuantumLanguageParserVisitor):
     def createFunctions(self):
         self.functions["print"] = print
 
-        self.functions["range"] = lambda a: range(a)
+        self.functions["range"] = __range__
 
     def visitStart(self, ctx: QuantumLanguageParser.StartContext):
         for statement in ctx.statement():
@@ -78,9 +80,7 @@ class QuantumLanguageTreeVisitor(QuantumLanguageParserVisitor):
     #     print('se hace la transpuesta de la matriz')
 
     def visitAssign(self, ctx: QuantumLanguageParser.AssignContext):
-        pass
-        # id = ctx.identifier.text
-        # self.variables[id] = self.visitExpression(ctx.expression())
+        self.variables[ctx.identifier().getText()] = self.visitExpression(ctx.expression())
 
     def visitExpression(self, ctx: QuantumLanguageParser.ExpressionContext):
         if ctx.OPEN_PAREN():
@@ -134,7 +134,7 @@ class QuantumLanguageTreeVisitor(QuantumLanguageParserVisitor):
         if ctx.INTEGER_LITERAL():
             return int(ctx.INTEGER_LITERAL().getText())
         if ctx.STRING_LITERAL():
-            return ctx.STRING_LITERAL().getText()
+            return ctx.STRING_LITERAL().getText()[1: -1]
         if ctx.IMAGINARY_LITERAL():
             return complex(ctx.IMAGINARY_LITERAL().getText())
         if ctx.FLOAT_LITERAL():
@@ -188,12 +188,12 @@ class QuantumLanguageTreeVisitor(QuantumLanguageParserVisitor):
 
     def visitWhile(self, ctx: QuantumLanguageParser.WhileContext):
         expression = self.visitExpression(ctx.expression())
-        if expression is not bool:
+        if type(expression) != bool:
             raise Exception("no boolean expression")
         while self.visitExpression(ctx.expression()):
-            for sentence in ctx.sentence():
-                # TODO: break and continue statement
-                self.visitSentence(sentence)
+            for statement in ctx.statement():
+                self.visitStatement(statement)
+            # TODO : BREAK
 
     def visitTry(self, ctx: QuantumLanguageParser.TryContext):
         try:
@@ -208,7 +208,10 @@ class QuantumLanguageTreeVisitor(QuantumLanguageParserVisitor):
 
     def visitFunction_execution(self, ctx: QuantumLanguageParser.Function_executionContext):
         f = self.functions[ctx.identifier().getText()]
-        return f(self.visitExpression(ctx.expression(0)))
+        args = []
+        for expression in ctx.expression():
+            args.append(self.visitExpression(expression))
+        return f(*args)
         # TODO mas parámetros
 
     def visitFunction_declaration(self, ctx: QuantumLanguageParser.Function_declarationContext):

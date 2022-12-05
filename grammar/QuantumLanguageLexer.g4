@@ -262,8 +262,8 @@ QUBIT_TRANSPOSE_IDENTIFIER
 
 /* Literals */
 STRING_LITERAL
-    : '\'' . '\''
-    | '"' . '"'
+    : '\'' .*? '\''
+    | '"' .*? '"'
     ;
 
 INTEGER_LITERAL
