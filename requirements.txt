@@ -1,2 +1,3 @@
 qiskit==0.39.2
 antlr4-tools==0.1
+numpy==1.23.5

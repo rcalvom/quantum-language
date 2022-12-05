@@ -14,6 +14,11 @@ class QuantumLanguageParserVisitor(ParseTreeVisitor):
         return self.visitChildren(ctx)
 
 
+    # Visit a parse tree produced by QuantumLanguageParser#statement.
+    def visitStatement(self, ctx:QuantumLanguageParser.StatementContext):
+        return self.visitChildren(ctx)
+
+
     # Visit a parse tree produced by QuantumLanguageParser#sentence.
     def visitSentence(self, ctx:QuantumLanguageParser.SentenceContext):
         return self.visitChildren(ctx)
@@ -54,31 +59,6 @@ class QuantumLanguageParserVisitor(ParseTreeVisitor):
         return self.visitChildren(ctx)
 
 
-    # Visit a parse tree produced by QuantumLanguageParser#matmul.
-    def visitMatmul(self, ctx:QuantumLanguageParser.MatmulContext):
-        return self.visitChildren(ctx)
-
-
-    # Visit a parse tree produced by QuantumLanguageParser#kronecker.
-    def visitKronecker(self, ctx:QuantumLanguageParser.KroneckerContext):
-        return self.visitChildren(ctx)
-
-
-    # Visit a parse tree produced by QuantumLanguageParser#hermitian.
-    def visitHermitian(self, ctx:QuantumLanguageParser.HermitianContext):
-        return self.visitChildren(ctx)
-
-
-    # Visit a parse tree produced by QuantumLanguageParser#conjugate.
-    def visitConjugate(self, ctx:QuantumLanguageParser.ConjugateContext):
-        return self.visitChildren(ctx)
-
-
-    # Visit a parse tree produced by QuantumLanguageParser#transpose.
-    def visitTranspose(self, ctx:QuantumLanguageParser.TransposeContext):
-        return self.visitChildren(ctx)
-
-
     # Visit a parse tree produced by QuantumLanguageParser#function_execution.
     def visitFunction_execution(self, ctx:QuantumLanguageParser.Function_executionContext):
         return self.visitChildren(ctx)
@@ -109,8 +89,18 @@ class QuantumLanguageParserVisitor(ParseTreeVisitor):
         return self.visitChildren(ctx)
 
 
-    # Visit a parse tree produced by QuantumLanguageParser#unitary_operator.
-    def visitUnitary_operator(self, ctx:QuantumLanguageParser.Unitary_operatorContext):
+    # Visit a parse tree produced by QuantumLanguageParser#prefix_unitary_operator.
+    def visitPrefix_unitary_operator(self, ctx:QuantumLanguageParser.Prefix_unitary_operatorContext):
+        return self.visitChildren(ctx)
+
+
+    # Visit a parse tree produced by QuantumLanguageParser#suffix_unitary_operator.
+    def visitSuffix_unitary_operator(self, ctx:QuantumLanguageParser.Suffix_unitary_operatorContext):
+        return self.visitChildren(ctx)
+
+
+    # Visit a parse tree produced by QuantumLanguageParser#pass.
+    def visitPass(self, ctx:QuantumLanguageParser.PassContext):
         return self.visitChildren(ctx)
 
 
