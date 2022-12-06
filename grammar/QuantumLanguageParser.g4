@@ -74,7 +74,9 @@ identifier
 expression
     : OPEN_PAREN expression CLOSE_PAREN
     | prefix_unitary_operator expression
-    | expression suffix_unitary_operator
+    | suffix_unitary_operator expression
+    | single_qubit_gate expression
+    | qubit_gate expression expression
     | expression binary_operator expression
     | identifier
     | function_execution
@@ -115,6 +117,25 @@ suffix_unitary_operator
     : HERMITIAN
     | CONJUGATE
     | TRANSPOSE
+    ;
+
+single_qubit_gate
+    : X
+    | Z
+    | Y
+    | H
+    | S
+    | SDG
+    | T
+    | TDG
+    ;
+
+qubit_gate
+    : RX
+    | RY
+    | RZ
+    | CX
+    | P
     ;
 
 pass

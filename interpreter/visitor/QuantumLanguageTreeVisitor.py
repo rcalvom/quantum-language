@@ -6,6 +6,9 @@ from recognition.generated.QuantumLanguageParserVisitor import QuantumLanguagePa
 
 # NumPy
 import numpy as np
+# Qiskit
+import qiskit
+
 
 
 def __print__(*args):
@@ -56,6 +59,72 @@ class QuantumLanguageTreeVisitor(QuantumLanguageParserVisitor):
             self.visitPass(ctx.pass_())
         elif ctx.expression() is not None:
             self.visitExpression(ctx.expression())
+
+
+    def visitAssign(self, ctx: QuantumLanguageParser.AssignContext):
+        id = ctx.identifier.text
+        self.variables[id] = self.visitExpression(ctx.expression())
+
+    def visitExpression(self, ctx: QuantumLanguageParser.ExpressionContext):
+        if ctx.OPEN_PAR_EN():
+            return self.visitExpression(ctx.expression())
+        if ctx.binary_operator():
+            left = self.visitExpression(ctx.expression(0))
+            right = self.visitExpression(ctx.expression(1))
+            bin_operator = ctx.binary_operator().getText()
+            if bin_operator == '+':
+                return left + right
+            if bin_operator == '-':
+                return left - right
+            if bin_operator == '*':
+                return left * right
+            if bin_operator == '/':
+                return left / right
+            if bin_operator == '//':
+                return left // right
+            if bin_operator == '%':
+                return left % right
+            if bin_operator == '**':
+                return left ** right
+            if bin_operator == '<':
+                return left < right
+            if bin_operator == '>':
+                return left > right
+            if bin_operator == '==':
+                return left == right
+            if bin_operator == '>=':
+                return left >= right
+            if bin_operator == '<=':
+                return left <= right
+            if bin_operator == '<>' or bin_operator == '!=':
+                return left != right
+        if ctx.unitary_operator():
+            u_operator = ctx.unitary_operator().getText()
+            operand = self.visitExpression(ctx.expression())
+            if u_operator == '+':
+                return +operand
+            if u_operator == '-':
+                return -operand
+            if u_operator == 'not':
+                return not u_operator
+        if ctx.identifier():
+            return self.variables[ctx.identifier().getText()]
+        if ctx.function_execution():
+            return self.visitFunction_execution(ctx.function_execution())
+        if ctx.INTEGER_LITERAL():
+            return int(ctx.INTEGER_LITERAL().getText())
+        if ctx.STRING_LITERAL():
+            return ctx.STRING_LITERAL().getText()
+        if ctx.IMAGINARY_LITERAL():
+            return complex(ctx.IMAGINARY_LITERAL().getText())
+        if ctx.FLOAT_LITERAL():
+            return float(ctx.FLOAT_LITERAL().getText())
+        if ctx.TRUE():
+            return True
+        if ctx.FALSE():
+            return False
+        return ctx.QUBIT_STATE_LITERAL().getText()
+        return None
 
     def visitIf(self, ctx: QuantumLanguageParser.IfContext):
         expression = self.visitExpression(ctx.expression())
@@ -149,6 +218,35 @@ class QuantumLanguageTreeVisitor(QuantumLanguageParserVisitor):
                 return np.conjugate(self.visitExpression(ctx.expression()))
             if ctx.suffix_unitary_operator().TRANSPOSE():
                 return np.transpose(self.visitExpression(ctx.expression()))
+        if ctx.single_qubit_gate():
+            if ctx.single_qubit_gate().X():
+                return qiskit.QuantumCircuit.x(self.visitExpression(ctx.expression()))
+            if ctx.single_qubit_gate().Y():
+                return qiskit.QuantumCircuit.y(self.visitExpression(ctx.expression()))
+            if ctx.single_qubit_gate().Z():
+                return qiskit.QuantumCircuit.z(self.visitExpression(ctx.expression()))
+            if ctx.single_qubit_gate().H():
+                return qiskit.QuantumCircuit.h(self.visitExpression(ctx.expression()))
+            if ctx.single_qubit_gate().S():
+                return qiskit.QuantumCircuit.s(self.visitExpression(ctx.expression()))
+            if ctx.single_qubit_gate().SDG():
+                return qiskit.QuantumCircuit.sdg(self.visitExpression(ctx.expression()))
+            if ctx.single_qubit_gate().T():
+                return qiskit.QuantumCircuit.t(self.visitExpression(ctx.expression()))
+            if ctx.single_qubit_gate().TDG():
+                return qiskit.QuantumCircuit.tdg(self.visitExpression(ctx.expression()))
+        if ctx.qubit_gate():
+            if ctx.qubit_gate().CX():
+                return qiskit.QuantumCircuit.cx(self.visitExpression(ctx.expression(0)), self.visitExpression(ctx.expression(1)))
+            if ctx.qubit_gate().RX():
+                return qiskit.QuantumCircuit.rx(self.visitExpression(ctx.expression(0)), self.visitExpression(ctx.expression(1)))
+            if ctx.qubit_gate().RY():
+                return qiskit.QuantumCircuit.ry(self.visitExpression(ctx.expression(0)), self.visitExpression(ctx.expression(1)))
+            if ctx.qubit_gate().RZ():
+                return qiskit.QuantumCircuit.rz(self.visitExpression(ctx.expression(0)), self.visitExpression(ctx.expression(1)))
+            if ctx.qubit_gate().P():
+                return qiskit.QuantumCircuit.p(self.visitExpression(ctx.expression(0)), self.visitExpression(ctx.expression(1)))
+
         if ctx.binary_operator():
             left = self.visitExpression(ctx.expression(0))
             right = self.visitExpression(ctx.expression(1))
