@@ -1,4 +1,5 @@
 """Manage File"""
+import qiskit
 
 # Python
 import os
@@ -7,9 +8,13 @@ import sys
 # Quantum Language
 from interpreter.execution.interpret import interpret
 
-if len(sys.argv) > 2:
-    pass
-
+import sys
 
 if __name__ == '__main__':
-    interpret("code")
+    file = sys.argv[0]
+    ibm = sys.argv[1]
+    executedInQuantumComputer = False
+
+    if ibm == 'ibm':
+        executedInQuantumComputer = True
+    interpret(file)

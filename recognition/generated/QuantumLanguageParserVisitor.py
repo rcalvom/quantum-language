@@ -99,6 +99,16 @@ class QuantumLanguageParserVisitor(ParseTreeVisitor):
         return self.visitChildren(ctx)
 
 
+    # Visit a parse tree produced by QuantumLanguageParser#single_qubit_gate.
+    def visitSingle_qubit_gate(self, ctx:QuantumLanguageParser.Single_qubit_gateContext):
+        return self.visitChildren(ctx)
+
+
+    # Visit a parse tree produced by QuantumLanguageParser#qubit_gate.
+    def visitQubit_gate(self, ctx:QuantumLanguageParser.Qubit_gateContext):
+        return self.visitChildren(ctx)
+
+
     # Visit a parse tree produced by QuantumLanguageParser#pass.
     def visitPass(self, ctx:QuantumLanguageParser.PassContext):
         return self.visitChildren(ctx)

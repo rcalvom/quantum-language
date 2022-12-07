@@ -178,6 +178,27 @@ BREAK : 'break';
 //AWAIT : 'await';
 //TODO: Use commentned keywords
 
+// single quantum gates
+X: 'X';
+H: 'H';
+Z: 'Z';
+Y: 'Y';
+S: 'S';
+SDG: 'SDG';
+T: 'Toffoli';
+TDG: 'TDG';
+
+
+// composed quantum gates
+RX: 'RX';
+RY: 'RY';
+RZ: 'RZ';
+CX: 'CX';
+P: 'P';
+
+
+
+
 
 /* Grouping literals */
 OPEN_PAREN : '(';
