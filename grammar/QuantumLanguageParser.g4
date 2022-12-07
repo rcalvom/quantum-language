@@ -20,6 +20,8 @@ sentence
     | assign
     | function_declaration
     | pass
+    | break
+    | continue
     | expression
     ;
 
@@ -67,8 +69,6 @@ assign
 
 identifier
     : IDENTIFIER
-    | QUBIT_IDENTIFIER
-    | QUBIT_TRANSPOSE_IDENTIFIER
     ;
 
 expression
@@ -83,6 +83,8 @@ expression
     | function_execution
     | inner_product
     | outer_product
+    | bra
+    | ket
     | INTEGER_LITERAL
     | STRING_LITERAL
     | IMAGINARY_LITERAL
@@ -92,11 +94,29 @@ expression
     ;
 
 inner_product
-    :
+    : braket
+    | bra ket
     ;
 
 outer_product
-    :
+    : ketbra
+    | ket bra
+    ;
+
+bra
+    : LESS_THAN (QUBIT_STATE_LITERAL|identifier) PIPE
+    ;
+
+ket
+    : PIPE (QUBIT_STATE_LITERAL|identifier) GREATER_THAN
+    ;
+
+braket
+    : LESS_THAN (QUBIT_STATE_LITERAL|identifier) PIPE (QUBIT_STATE_LITERAL|identifier) GREATER_THAN
+    ;
+
+ketbra
+    : PIPE (QUBIT_STATE_LITERAL|identifier) GREATER_THAN LESS_THAN (QUBIT_STATE_LITERAL|identifier) PIPE
     ;
 
 binary_operator
@@ -155,4 +175,12 @@ constant
 
 pass
     : PASS
+    ;
+
+break
+    : BREAK
+    ;
+
+continue
+    : CONTINUE
     ;

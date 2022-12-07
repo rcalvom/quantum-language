@@ -124,6 +124,9 @@ LT_EQ : '<=';
 NOT_EQ_1 : '<>';
 NOT_EQ_2 : '!=';
 
+// Pipe
+PIPE: '|';
+
 // Assignations
 ASSIGN : '=';
 //ADD_ASSIGN : '+=';
@@ -198,9 +201,6 @@ CX: 'CX';
 P: 'P';
 
 
-
-
-
 /* Grouping literals */
 OPEN_PAREN : '(';
 CLOSE_PAREN : ')';
@@ -266,15 +266,6 @@ TRANSPOSE: 't';
 /* Identifier*/
 IDENTIFIER: [a-zA-Z][a-zA-Z0-9_]*;
 
-/* Qubits*/
-QUBIT_IDENTIFIER
-    : '|'[a-zA-Z][a-zA-Z0-9_]*'>'
-    ;
-
-QUBIT_TRANSPOSE_IDENTIFIER
-    : '<'[a-zA-Z][a-zA-Z0-9_]*'|'
-    ;
-
 /* Literals */
 STRING_LITERAL
     : '\'' .*? '\''
@@ -296,12 +287,9 @@ FLOAT_LITERAL
     ;
 
 QUBIT_STATE_LITERAL
-    : '|' [01+-]+ '>'
+    : [01+-]+ // TODO: Add
     ;
 
-QUBIT_TRANSPOSE_STATE_LITERAL
-    : '<' [01+-]+ '|'
-    ;
 
 
 

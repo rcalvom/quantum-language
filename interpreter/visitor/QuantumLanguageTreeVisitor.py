@@ -10,9 +10,6 @@ import numpy as np
 # Qiskit
 import qiskit
 
-# regex
-import re
-
 
 def __print__(*args):
     return print(*args)
@@ -29,7 +26,7 @@ class QuantumLanguageTreeVisitor(QuantumLanguageParserVisitor):
     def __init__(self):
         self.createFunctions()
         self.functions = {}
-        self.variables = {} #TODO: CONSTANTES (COMPUERTAS)
+        self.variables = {}
         circuit = qiskit.QuantumCircuit()
 
     def createFunctions(self):
@@ -102,8 +99,18 @@ class QuantumLanguageTreeVisitor(QuantumLanguageParserVisitor):
         for variable in iterable:
             self.variables[ctx.identifier().getText()] = variable
             for statement in ctx.statement():
+                b = False
+                c = False
+                for sentence in statement.sentence():
+                    if sentence.break_():
+                        b = True
+                    if sentence.continue_():
+                        c = True
+                if b:
+                    break
+                if c:
+                    continue
                 self.visitStatement(statement)
-                # TODO: break and continue statement
 
     def visitWhile(self, ctx: QuantumLanguageParser.WhileContext):
         expression = self.visitExpression(ctx.expression())
@@ -111,8 +118,18 @@ class QuantumLanguageTreeVisitor(QuantumLanguageParserVisitor):
             raise Exception("no boolean expression")
         while self.visitExpression(ctx.expression()):
             for statement in ctx.statement():
+                b = False
+                c = False
+                for sentence in statement.sentence():
+                    if sentence.break_():
+                        b = True
+                    if sentence.continue_():
+                        c = True
+                if b:
+                    break
+                if c:
+                    continue
                 self.visitStatement(statement)
-            # TODO: break and continue statement
 
     def visitTry(self, ctx: QuantumLanguageParser.TryContext):
         try:
