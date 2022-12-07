@@ -6,9 +6,6 @@ from recognition.generated.QuantumLanguageParserVisitor import QuantumLanguagePa
 
 # NumPy
 import numpy as np
-# Qiskit
-import qiskit
-
 
 # Qiskit
 import qiskit
@@ -48,90 +45,24 @@ class QuantumLanguageTreeVisitor(QuantumLanguageParserVisitor):
             self.visitSentence(sentence)
 
     def visitSentence(self, ctx: QuantumLanguageParser.SentenceContext):
-        if ctx.if_() is not None:
+        if ctx.if_():
             self.visitIf(ctx.if_())
-        elif ctx.for_() is not None:
+        elif ctx.for_():
             self.visitFor(ctx.for_())
-        elif ctx.while_() is not None:
+        elif ctx.while_():
             self.visitWhile(ctx.while_())
-        elif ctx.try_() is not None:
+        elif ctx.try_():
             self.visitTry(ctx.try_())
-        elif ctx.function_execution() is not None:
+        elif ctx.function_execution():
             self.visitFunction_execution(ctx.function_execution())
-        elif ctx.assign() is not None:
+        elif ctx.assign():
             self.visitAssign(ctx.assign())
-        elif ctx.function_declaration() is not None:
+        elif ctx.function_declaration():
             self.visitFunction_declaration(ctx.function_declaration())
-        elif ctx.pass_() is not None:
+        elif ctx.pass_():
             self.visitPass(ctx.pass_())
-        elif ctx.expression() is not None:
+        elif ctx.expression():
             self.visitExpression(ctx.expression())
-
-
-    def visitAssign(self, ctx: QuantumLanguageParser.AssignContext):
-        id = ctx.identifier.text
-        self.variables[id] = self.visitExpression(ctx.expression())
-
-    def visitExpression(self, ctx: QuantumLanguageParser.ExpressionContext):
-        if ctx.OPEN_PAR_EN():
-            return self.visitExpression(ctx.expression())
-        if ctx.binary_operator():
-            left = self.visitExpression(ctx.expression(0))
-            right = self.visitExpression(ctx.expression(1))
-            bin_operator = ctx.binary_operator().getText()
-            if bin_operator == '+':
-                return left + right
-            if bin_operator == '-':
-                return left - right
-            if bin_operator == '*':
-                return left * right
-            if bin_operator == '/':
-                return left / right
-            if bin_operator == '//':
-                return left // right
-            if bin_operator == '%':
-                return left % right
-            if bin_operator == '**':
-                return left ** right
-            if bin_operator == '<':
-                return left < right
-            if bin_operator == '>':
-                return left > right
-            if bin_operator == '==':
-                return left == right
-            if bin_operator == '>=':
-                return left >= right
-            if bin_operator == '<=':
-                return left <= right
-            if bin_operator == '<>' or bin_operator == '!=':
-                return left != right
-        if ctx.unitary_operator():
-            u_operator = ctx.unitary_operator().getText()
-            operand = self.visitExpression(ctx.expression())
-            if u_operator == '+':
-                return +operand
-            if u_operator == '-':
-                return -operand
-            if u_operator == 'not':
-                return not u_operator
-        if ctx.identifier():
-            return self.variables[ctx.identifier().getText()]
-        if ctx.function_execution():
-            return self.visitFunction_execution(ctx.function_execution())
-        if ctx.INTEGER_LITERAL():
-            return int(ctx.INTEGER_LITERAL().getText())
-        if ctx.STRING_LITERAL():
-            return ctx.STRING_LITERAL().getText()
-        if ctx.IMAGINARY_LITERAL():
-            return complex(ctx.IMAGINARY_LITERAL().getText())
-        if ctx.FLOAT_LITERAL():
-            return float(ctx.FLOAT_LITERAL().getText())
-        if ctx.TRUE():
-            return True
-        if ctx.FALSE():
-            return False
-        return ctx.QUBIT_STATE_LITERAL().getText()
-        return None
 
     def visitIf(self, ctx: QuantumLanguageParser.IfContext):
         expression = self.visitExpression(ctx.expression())
@@ -215,9 +146,8 @@ class QuantumLanguageTreeVisitor(QuantumLanguageParserVisitor):
             #assert
             self.variables[ctx.identifier().getText()[1: -1]] = self.visitExpression(ctx.expression())
 
-
     def visitExpression(self, ctx: QuantumLanguageParser.ExpressionContext):
-        if ctx.OPEN_PAREN() and ctx.CLOSE_PAREN():
+        if ctx.OPEN_PAREN() and ctx.CLOSE_PAREN() and not ctx.qubit_gate():
             return self.visitExpression(ctx.expression())
         if ctx.prefix_unitary_operator():
             if ctx.prefix_unitary_operator().ADD():
@@ -261,7 +191,6 @@ class QuantumLanguageTreeVisitor(QuantumLanguageParserVisitor):
                 return qiskit.QuantumCircuit.rz(self.visitExpression(ctx.expression(0)), self.visitExpression(ctx.expression(1)))
             if ctx.qubit_gate().P():
                 return qiskit.QuantumCircuit.p(self.visitExpression(ctx.expression(0)), self.visitExpression(ctx.expression(1)))
-
         if ctx.binary_operator():
             left = self.visitExpression(ctx.expression(0))
             right = self.visitExpression(ctx.expression(1))
@@ -299,13 +228,16 @@ class QuantumLanguageTreeVisitor(QuantumLanguageParserVisitor):
             return self.variables[ctx.identifier().getText()]
         if ctx.function_execution():
             return self.visitFunction_execution(ctx.function_execution())
+        if ctx.inner_product():
+            pass
+        if ctx.outer_product():
+            pass
         if ctx.INTEGER_LITERAL():
             return int(ctx.INTEGER_LITERAL().getText())
         if ctx.STRING_LITERAL():
             return ctx.STRING_LITERAL().getText()[1: -1]
         if ctx.IMAGINARY_LITERAL():
             return complex(ctx.IMAGINARY_LITERAL().getText())
-        #TODO Revisar numeros complejos
         if ctx.FLOAT_LITERAL():
             return float(ctx.FLOAT_LITERAL().getText())
         if ctx.TRUE():

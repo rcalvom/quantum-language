@@ -74,9 +74,9 @@ identifier
 expression
     : OPEN_PAREN expression CLOSE_PAREN
     | prefix_unitary_operator expression
-    | suffix_unitary_operator expression
+    | expression suffix_unitary_operator
     | single_qubit_gate expression
-    | qubit_gate expression expression
+    | qubit_gate OPEN_PAREN expression CLOSE_PAREN expression
     | expression binary_operator expression
     | identifier
     | function_execution
