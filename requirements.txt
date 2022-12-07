@@ -1,5 +1,2 @@
-qiskit==0.39.2
 antlr4-tools==0.1
 numpy==1.23.5
-pandas==1.2.4
-matplotlib==3.6.2
