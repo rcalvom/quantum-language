@@ -78,12 +78,22 @@ expression
     | expression binary_operator expression
     | identifier
     | function_execution
+    | inner_product
+    | outer_product
     | INTEGER_LITERAL
     | STRING_LITERAL
     | IMAGINARY_LITERAL
     | FLOAT_LITERAL
     | TRUE | FALSE
     | QUBIT_STATE_LITERAL
+    ;
+
+inner_product
+    :
+    ;
+
+outer_product
+    :
     ;
 
 binary_operator
