@@ -174,6 +174,7 @@ CLASS : 'class';
 PASS : 'pass';
 CONTINUE : 'continue';
 BREAK : 'break';
+PI : 'pi';
 //ASYNC : 'async';
 //AWAIT : 'await';
 //TODO: Use commentned keywords

@@ -180,6 +180,9 @@ class QuantumLanguageTreeVisitor(QuantumLanguageParserVisitor):
                 return qiskit.QuantumCircuit.t(self.visitExpression(ctx.expression()))
             if ctx.single_qubit_gate().TDG():
                 return qiskit.QuantumCircuit.tdg(self.visitExpression(ctx.expression()))
+        if ctx.constant():
+            if ctx.constant().PI():
+                return np.pi
         if ctx.qubit_gate():
             if ctx.qubit_gate().CX():
                 return qiskit.QuantumCircuit.cx(self.visitExpression(ctx.expression(0)), self.visitExpression(ctx.expression(1)))

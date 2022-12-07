@@ -109,6 +109,11 @@ class QuantumLanguageParserVisitor(ParseTreeVisitor):
         return self.visitChildren(ctx)
 
 
+    # Visit a parse tree produced by QuantumLanguageParser#constant.
+    def visitConstant(self, ctx:QuantumLanguageParser.ConstantContext):
+        return self.visitChildren(ctx)
+
+
     # Visit a parse tree produced by QuantumLanguageParser#pass.
     def visitPass(self, ctx:QuantumLanguageParser.PassContext):
         return self.visitChildren(ctx)

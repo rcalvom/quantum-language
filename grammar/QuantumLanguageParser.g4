@@ -76,7 +76,8 @@ expression
     | prefix_unitary_operator expression
     | expression suffix_unitary_operator
     | single_qubit_gate expression
-    | qubit_gate OPEN_PAREN expression CLOSE_PAREN expression
+    | qubit_gate expression expression
+    | constant
     | expression binary_operator expression
     | identifier
     | function_execution
@@ -146,6 +147,10 @@ qubit_gate
     | RZ
     | CX
     | P
+    ;
+
+constant
+    : PI
     ;
 
 pass
