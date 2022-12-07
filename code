@@ -5,5 +5,3 @@ for i in range(qubits - 1):
 ;
 print("Estado de", qubits, "Qbits:")
 print(|psi>)
-
-print(|psi><psi|)
