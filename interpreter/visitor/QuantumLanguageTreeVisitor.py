@@ -10,6 +10,12 @@ import numpy as np
 import qiskit
 
 
+# Qiskit
+import qiskit
+
+# regex
+import re
+
 
 def __print__(*args):
     return print(*args)
@@ -27,6 +33,7 @@ class QuantumLanguageTreeVisitor(QuantumLanguageParserVisitor):
         self.createFunctions()
         self.functions = {}
         self.variables = {} #TODO: CONSTANTES (COMPUERTAS)
+        circuit = qiskit.QuantumCircuit()
 
     def createFunctions(self):
         self.functions["print"] = __print__
@@ -198,8 +205,16 @@ class QuantumLanguageTreeVisitor(QuantumLanguageParserVisitor):
         return super().visitFunction_declaration(ctx)
 
     def visitAssign(self, ctx: QuantumLanguageParser.AssignContext):
-        #TODO Qbits
-        self.variables[ctx.identifier().getText()] = self.visitExpression(ctx.expression())
+        if ctx.identifier().IDENTIFIER():
+            #assert
+            self.variables[ctx.identifier().getText()] = self.visitExpression(ctx.expression())
+        if ctx.identifier().QUBIT_IDENTIFIER():
+            #assert
+            self.variables[ctx.identifier().getText()[1: -1]] = self.visitExpression(ctx.expression())
+        if ctx.identifier().QUBIT_TRANSPOSE_IDENTIFIER():
+            #assert
+            self.variables[ctx.identifier().getText()[1: -1]] = self.visitExpression(ctx.expression())
+
 
     def visitExpression(self, ctx: QuantumLanguageParser.ExpressionContext):
         if ctx.OPEN_PAREN() and ctx.CLOSE_PAREN():
