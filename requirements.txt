@@ -1,2 +1,2 @@
 antlr4-tools==0.1
-numpy==1.23.5
+#numpy==1.23.5
