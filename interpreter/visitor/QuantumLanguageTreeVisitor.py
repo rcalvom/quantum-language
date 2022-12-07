@@ -36,7 +36,6 @@ class QuantumLanguageTreeVisitor(QuantumLanguageParserVisitor):
         self.variables = {}
         self.createFunctions()
         self.createVariables()
-        circuit = qiskit.QuantumCircuit()
 
     def createFunctions(self):
         self.functions["print"] = __print__
