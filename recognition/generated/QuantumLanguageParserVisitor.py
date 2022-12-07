@@ -69,6 +69,31 @@ class QuantumLanguageParserVisitor(ParseTreeVisitor):
         return self.visitChildren(ctx)
 
 
+    # Visit a parse tree produced by QuantumLanguageParser#plot.
+    def visitPlot(self, ctx:QuantumLanguageParser.PlotContext):
+        return self.visitChildren(ctx)
+
+
+    # Visit a parse tree produced by QuantumLanguageParser#bra.
+    def visitBra(self, ctx:QuantumLanguageParser.BraContext):
+        return self.visitChildren(ctx)
+
+
+    # Visit a parse tree produced by QuantumLanguageParser#ket.
+    def visitKet(self, ctx:QuantumLanguageParser.KetContext):
+        return self.visitChildren(ctx)
+
+
+    # Visit a parse tree produced by QuantumLanguageParser#braket.
+    def visitBraket(self, ctx:QuantumLanguageParser.BraketContext):
+        return self.visitChildren(ctx)
+
+
+    # Visit a parse tree produced by QuantumLanguageParser#ketbra.
+    def visitKetbra(self, ctx:QuantumLanguageParser.KetbraContext):
+        return self.visitChildren(ctx)
+
+
     # Visit a parse tree produced by QuantumLanguageParser#assign.
     def visitAssign(self, ctx:QuantumLanguageParser.AssignContext):
         return self.visitChildren(ctx)
@@ -81,6 +106,21 @@ class QuantumLanguageParserVisitor(ParseTreeVisitor):
 
     # Visit a parse tree produced by QuantumLanguageParser#expression.
     def visitExpression(self, ctx:QuantumLanguageParser.ExpressionContext):
+        return self.visitChildren(ctx)
+
+
+    # Visit a parse tree produced by QuantumLanguageParser#inner_product.
+    def visitInner_product(self, ctx:QuantumLanguageParser.Inner_productContext):
+        return self.visitChildren(ctx)
+
+
+    # Visit a parse tree produced by QuantumLanguageParser#outer_product.
+    def visitOuter_product(self, ctx:QuantumLanguageParser.Outer_productContext):
+        return self.visitChildren(ctx)
+
+
+    # Visit a parse tree produced by QuantumLanguageParser#kron_product.
+    def visitKron_product(self, ctx:QuantumLanguageParser.Kron_productContext):
         return self.visitChildren(ctx)
 
 
@@ -99,16 +139,6 @@ class QuantumLanguageParserVisitor(ParseTreeVisitor):
         return self.visitChildren(ctx)
 
 
-    # Visit a parse tree produced by QuantumLanguageParser#single_qubit_gate.
-    def visitSingle_qubit_gate(self, ctx:QuantumLanguageParser.Single_qubit_gateContext):
-        return self.visitChildren(ctx)
-
-
-    # Visit a parse tree produced by QuantumLanguageParser#qubit_gate.
-    def visitQubit_gate(self, ctx:QuantumLanguageParser.Qubit_gateContext):
-        return self.visitChildren(ctx)
-
-
     # Visit a parse tree produced by QuantumLanguageParser#constant.
     def visitConstant(self, ctx:QuantumLanguageParser.ConstantContext):
         return self.visitChildren(ctx)
@@ -116,6 +146,16 @@ class QuantumLanguageParserVisitor(ParseTreeVisitor):
 
     # Visit a parse tree produced by QuantumLanguageParser#pass.
     def visitPass(self, ctx:QuantumLanguageParser.PassContext):
+        return self.visitChildren(ctx)
+
+
+    # Visit a parse tree produced by QuantumLanguageParser#break.
+    def visitBreak(self, ctx:QuantumLanguageParser.BreakContext):
+        return self.visitChildren(ctx)
+
+
+    # Visit a parse tree produced by QuantumLanguageParser#continue.
+    def visitContinue(self, ctx:QuantumLanguageParser.ContinueContext):
         return self.visitChildren(ctx)
 
 

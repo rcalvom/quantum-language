@@ -1,0 +1,37 @@
+b = '110'
+
+# Find length of b bitstring
+n = len(b)
+
+# Create a qbit simon_circuit with initial value of |0>
+|simon_circuit> = |0>
+
+# Perform tensorial product of 2n qubits
+for i in range((2 * n) - 1):
+	|simon_circuit> = |simon_circuit>|0>
+;
+
+# Define a Hadamard gate for n  first qubits
+hadamard = H
+for i in range(n - 1):
+	hadamard = hadamard (X) H
+;
+for i in range(n):
+	hadamard = hadamard (X) I
+;
+
+# Apply Hadamard gate to qubit state
+|simon_circuit> = hadamard @ |simon_circuit>
+
+# Apply simon oracle to qubit state
+|simon_circuit> = simon_oracle @ |simon_circuit>
+
+
+# Apply Inverse Hadamard gate to qubit state
+|simon_circuit> = hadamard @ |simon_circuit>
+
+# Plot the final qubit state
+plot |simon_circuit>
+
+# Print the final Qbit
+print(|simon_circuit>)

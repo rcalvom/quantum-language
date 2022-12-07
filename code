@@ -1,5 +1,9 @@
-end = 0
-while end < 10:
-    print("END:", end)
-    end = end + 1
+qubits = 3
+|psi> = |0>
+for i in range(qubits - 1):
+    |psi> = |psi>|1>
+;
+print("Estado de", qubits, "Qbits:")
+print(|psi>)
 
+print(|psi><psi|)

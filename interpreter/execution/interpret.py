@@ -13,6 +13,7 @@ from ..visitor.QuantumLanguageTreeVisitor import QuantumLanguageTreeVisitor
 
 from qiskit import IBMQ
 
+
 def interpret(path, ibm):
     tokens: CommonTokenStream = CommonTokenStream(QuantumLanguageLexer(FileStream(path)))
     # TODO: receive a file content
@@ -25,7 +26,6 @@ def interpret(path, ibm):
     visitor: QuantumLanguageTreeVisitor = QuantumLanguageTreeVisitor()
     visitor.visit(tree)
     # TODO: How to show results
-
     if ibm == True:
         provider = IBMQ.enable_account(
             '99a7870ee5479c947060f96fd8cfcacc607ea7dec50189f1736f016b0be985c4ffd08c2a265580e54d27f9c6e1d2e53647d1bbc72488efce07e2df18d76ab337')

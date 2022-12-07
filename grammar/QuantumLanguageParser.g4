@@ -23,6 +23,7 @@ sentence
     | break
     | continue
     | expression
+    | plot
     ;
 
 
@@ -64,25 +65,52 @@ function_declaration
     : DEF identifier OPEN_PAREN (identifier (COMMA identifier)*)? CLOSE_PAREN COLON INDENT sentence DEDENT
     ;
 
+plot
+    : PLOT ket
+    ;
+
+bra
+    : LESS_THAN identifier PIPE
+    | BRA_LITERAL
+    ;
+
+ket
+    : PIPE identifier GREATER_THAN
+    | KET_LITERAL
+    ;
+
+braket
+    : LESS_THAN identifier PIPE identifier GREATER_THAN
+    ;
+
+ketbra
+    : PIPE identifier LESS_THAN identifier PIPE
+    ;
+
 assign
-    : identifier ASSIGN expression SEMI_COLON?;
+    : identifier ASSIGN expression
+    ;
 
 identifier
     : IDENTIFIER
+    | LESS_THAN IDENTIFIER PIPE
+    | PIPE IDENTIFIER GREATER_THAN
     ;
+
 
 expression
     : OPEN_PAREN expression CLOSE_PAREN
     | prefix_unitary_operator expression
     | expression suffix_unitary_operator
-    | single_qubit_gate expression
-    | qubit_gate expression expression
+//    | single_qubit_gate expression
+//    | qubit_gate expression expression
     | constant
     | expression binary_operator expression
     | identifier
     | function_execution
     | inner_product
     | outer_product
+    | kron_product
     | bra
     | ket
     | INTEGER_LITERAL
@@ -90,7 +118,6 @@ expression
     | IMAGINARY_LITERAL
     | FLOAT_LITERAL
     | TRUE | FALSE
-    | QUBIT_STATE_LITERAL
     ;
 
 inner_product
@@ -103,20 +130,8 @@ outer_product
     | ket bra
     ;
 
-bra
-    : LESS_THAN (QUBIT_STATE_LITERAL|identifier) PIPE
-    ;
-
-ket
-    : PIPE (QUBIT_STATE_LITERAL|identifier) GREATER_THAN
-    ;
-
-braket
-    : LESS_THAN (QUBIT_STATE_LITERAL|identifier) PIPE (QUBIT_STATE_LITERAL|identifier) GREATER_THAN
-    ;
-
-ketbra
-    : PIPE (QUBIT_STATE_LITERAL|identifier) GREATER_THAN LESS_THAN (QUBIT_STATE_LITERAL|identifier) PIPE
+kron_product
+    : ket ket
     ;
 
 binary_operator
@@ -150,24 +165,24 @@ suffix_unitary_operator
     | TRANSPOSE
     ;
 
-single_qubit_gate
-    : X
-    | Z
-    | Y
-    | H
-    | S
-    | SDG
-    | T
-    | TDG
-    ;
-
-qubit_gate
-    : RX
-    | RY
-    | RZ
-    | CX
-    | P
-    ;
+//single_qubit_gate
+//    : X
+//    | Z
+//    | Y
+//    | H
+//    | S
+//    | SDG
+//    | T
+//    | TDG
+//    ;
+//
+//qubit_gate
+//    : RX
+//    | RY
+//    | RZ
+//    | CX
+//    | P
+//    ;
 
 constant
     : PI

@@ -181,24 +181,25 @@ PI : 'pi';
 //ASYNC : 'async';
 //AWAIT : 'await';
 //TODO: Use commentned keywords
+PLOT: 'plot';
 
 // single quantum gates
-X: 'X';
-H: 'H';
-Z: 'Z';
-Y: 'Y';
-S: 'S';
-SDG: 'SDG';
-T: 'Toffoli';
-TDG: 'TDG';
+//X: 'X';
+//H: 'H';
+//Z: 'Z';
+//Y: 'Y';
+//S: 'S';
+//SDG: 'SDG';
+//T: 'Toffoli';
+//TDG: 'TDG';
 
 
 // composed quantum gates
-RX: 'RX';
-RY: 'RY';
-RZ: 'RZ';
-CX: 'CX';
-P: 'P';
+//RX: 'RX';
+//RY: 'RY';
+//RZ: 'RZ';
+//CX: 'CX';
+//P: 'P';
 
 
 /* Grouping literals */
@@ -262,7 +263,6 @@ HERMITIAN : 'T';
 CONJUGATE : '\'';
 TRANSPOSE: 't';
 
-
 /* Identifier*/
 IDENTIFIER: [a-zA-Z][a-zA-Z0-9_]*;
 
@@ -286,10 +286,13 @@ FLOAT_LITERAL
     : INTEGER_LITERAL '.' [0-9]+
     ;
 
-QUBIT_STATE_LITERAL
-    : [01+-]+ // TODO: Add
+BRA_LITERAL
+    : LESS_THAN [01+-]+ PIPE
     ;
 
+KET_LITERAL
+    : PIPE [01+-]+ GREATER_THAN
+    ;
 
 
 
