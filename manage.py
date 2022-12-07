@@ -7,4 +7,4 @@ import sys
 from interpreter.execution.interpret import interpret
 
 if __name__ == '__main__':
-    interpret(sys.argv[1], False)
+    interpret(sys.argv[1])
