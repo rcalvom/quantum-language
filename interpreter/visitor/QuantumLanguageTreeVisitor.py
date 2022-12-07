@@ -14,9 +14,6 @@ import pandas as pd
 # MatPlotLib
 import matplotlib.pyplot as plt
 
-# Qiskit
-import qiskit
-
 
 def __print__(*args):
     return print(*args)
