@@ -431,7 +431,6 @@ class QuantumLanguageTreeVisitor(QuantumLanguageParserVisitor):
         for index, position in enumerate(qubit):
             data[index] = np.abs(position[0]) ** 2
         plt.bar(data.keys(), data.values())
-        display(plt)
 
     def visitKet(self, ctx: QuantumLanguageParser.KetContext):
         if ctx.KET_LITERAL():
